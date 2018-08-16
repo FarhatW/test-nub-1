@@ -1,0 +1,39 @@
+<div class="col-lg-12 separator">
+
+  <div class="row margin50">
+
+    <h4 class="col-md-12">
+      {{'HOME.LOGINTITLE' | translate}}
+    </h4>
+    <div class="col-md-12 margin20">
+            <form class="form-horizontal" name="myForm" #f="ngForm" (ngSubmit)="submit()" novalidate>
+            <div class="row">
+              <label for="Mail" class="col-sm-4 form-control-label">Email : </label>
+              <div class="col-sm-6">
+                <input id="Mail" required [(ngModel)]="saveLogin.userMail" name="Mail" type="text"  placeholder="Mail" class="form-control"/>
+              </div>
+            </div>
+
+            <div class="row margin15">
+              <label for="Password" class="col-sm-4 form-control-label">{{'HOME.PASSWORD' | translate}}</label>
+              <div class="col-sm-6">
+                <input id="Password" required [(ngModel)]="saveLogin.password" name="password" type="password"  placeholder="Password" class="form-control"/>
+
+                <a (click)="showAddModal()">  {{'MDPOUBLIE.MDPOUBLIE' | translate}} </a>
+
+              </div>
+
+            </div>
+            <div class="row margin15">
+              <div class="offset-sm-8 col-sm-2">
+                <button *ngIf="isFrench; else login" class="btn redbackgroundcolor" [disabled]="!f.valid">Connexion</button>
+                <ng-template #login>
+                  <button class="btn redbackgroundcolor" [disabled]="!f.valid">Log in</button>
+                </ng-template>
+
+              </div>
+            </div>
+          </form>
+    </div>
+  </div>
+</div>

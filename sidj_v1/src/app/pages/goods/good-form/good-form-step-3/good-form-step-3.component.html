@@ -1,0 +1,449 @@
+<form name="myForm" #f="ngForm" novalidate (keydown)="keyDown($event)">
+  <nb-card>
+    <nb-card-header>
+      <div class="row">
+        <div class="col-lg-6">
+          {{'PRODUIT.INFORMATIONSSECONDAIRE' | translate}}
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="col-10 offset-1">
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.DIMENSIONPRODUIT' | translate}}{{'PRODUIT.DEUXPOINTS' |
+            translate}} (Format : LxlxH) cm
+          </small>
+          <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+          <input [ngModel]="good?.productDimension" (ngModelChange)="good.productDimension = $event"
+                 placeholder="{{'PRODUIT.DIMENSIONPRODUIT' | translate}}"
+                 id="ProductDimension" class="form-control" name="ProductDimension" type="text"
+                 #productdimension="ngModel" [pattern]="dimensionPattern"/>
+          <div *ngIf="productdimension.errors && (productdimension.dirty || productdimension.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!productdimension.errors.pattern">
+              {{'PRODUIT.DIMENSIONPRODUIT' | translate}} {{'ERROR.COLIS' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.DIMENSIONDELABOITE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+            translate}} (Format : LxlxH) cm
+          </small>
+          <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+          <input [ngModel]="good?.boxDimension" (ngModelChange)="good.boxDimension = $event"
+                 placeholder="{{'PRODUIT.DIMENSIONDELABOITE' | translate}}"
+                 id="BoxDimension" class="form-control" name="BoxDimension" type="text"
+                 #boxdimension="ngModel" [pattern]="dimensionPattern"/>
+          <div *ngIf="boxdimension.errors && (boxdimension.dirty || boxdimension.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!boxdimension.errors.pattern">
+              {{'PRODUIT.DIMENSIONDELABOITE' | translate}} {{'ERROR.COLIS' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-lg-12">{{'PRODUIT.COULEURS' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+            <input [ngModel]="good?.colors" (ngModelChange)="good.colors = $event"
+                   placeholder="{{'PRODUIT.COULEURS' | translate}}"
+                   id="WhichColor" class="form-control" name="WhichColor" type="text"
+                   #whichcolor="ngModel" [pattern]="alphabetiquePattern"/>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-lg-12">{{'PRODUIT.MODELES' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+            <input [ngModel]="good?.models" (ngModelChange)="good.models = $event"
+                   placeholder="{{'PRODUIT.MODELES' | translate}}"
+                   id="WhichModels" class="form-control" name="WhichModels" type="text"/>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="whichcolor.errors && (whichcolor.dirty || whichcolor.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!whichcolor.errors.pattern">
+                {{'PRODUIT.COULEURS' | translate}} {{'ERROR.NOTDIGIT' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.LANGUEPACKAGING' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+            <i class="fa fa-language" aria-hidden="true"></i>
+          </span>
+          <select [ngModel]="good?.packagingLanguage" (ngModelChange)="good.packagingLanguage = $event"
+                  class="form-control" name="PackagingLanguage">
+            <option value="" selected data-default>{{'PRODUIT.SELECTLANGUEEMBALLE' | translate}}</option>
+            <option *ngFor="let a of goodLanguage" value="{{a.name.toUpperCase()}}">{{isFrench? a.frenchName : a.name}}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.LANGUEMANUEL' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+            <i class="fa fa-language" aria-hidden="true"></i>
+          </span>
+          <select [ngModel]="good?.manualLanguage" (ngModelChange)="good.manualLanguage = $event"
+                  class="form-control" name="ManualLanguage">
+            <option value="" selected data-default>{{'PRODUIT.SELECTLANGUENOTICE' | translate}}</option>
+            <option *ngFor="let a of goodLanguage" value="{{a.name.toUpperCase()}}">{{isFrench? a.frenchName : a.name}}
+            </option>
+          </select>
+        </div>
+
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.LANGUEPRODUIT' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+            <i class="fa fa-language" aria-hidden="true"></i>
+          </span>
+          <select [ngModel]="good?.productLanguage" (ngModelChange)="good.productLanguage = $event"
+                  name="ProductLanguage" class="form-control">
+            <option value="" selected data-default>{{'PRODUIT.SELECTLANGUEPRODUIT' | translate}}</option>
+            <option value="FRENCH">{{'LANGUE.FRANCAIS' | translate}}</option>
+            <option value="ENGLISH">{{'LANGUE.ANGLAIS' | translate}}</option>
+          </select>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.AGE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+          <input [ngModel]="good?.age" (ngModelChange)="good.age = $event" placeholder="{{'PRODUIT.AGE' | translate}}"
+                 id="Age" class="form-control" name="Age" type="text"
+                 #age="ngModel" [pattern]="numberPattern"/>
+          <select [ngModel]="good?.ageType" (ngModelChange)="good.ageType = $event" class="form-control"
+                  name="TypeAge">
+            <option *ngFor="let a of goodYear" [value]="a.name">{{isFrench? a.frenchName : a.name}}</option>
+          </select>
+          <div *ngIf="age.errors && (age.dirty || age.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!age.errors.pattern">
+              {{'PRODUIT.AGE' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.PRODUITSEXE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+            <i class="fa fa-venus-mars" aria-hidden="true"></i>
+          </span>
+          <select [ngModel]="good?.gender" (ngModelChange)="good.gender = $event"
+                  class="form-control" name="ProductSexe">
+            <option value="" selected data-default>{{'PRODUIT.SELECTGENRE' | translate}}</option>
+            <option *ngFor="let gs of goodSexe" value="{{gs.name}}">{{isFrench? gs.frenchName : gs.name}}</option>
+          </select>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-lg-12">{{'PRODUIT.POIDBRUTPRODUIT' | translate}}{{'PRODUIT.DEUXPOINTS' |
+              translate}}
+            </small>
+            <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+            <input [ngModel]="good?.productGrossWeight" (ngModelChange)="good.productGrossWeight = $event"
+                   placeholder="{{'PRODUIT.POIDBRUTPRODUIT' | translate}}"
+                   id="ProductGrossWeight" class="form-control" name="ProductGrossWeight" type="text"
+                   #productgrossweight="ngModel" [pattern]="numberWithPointPattern"/>
+            <span class="input-group-append">
+          <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.POIDS' | translate}}
+          </span>
+        </span>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-lg-12">{{'PRODUIT.POIDNETPRODUIT' | translate}}{{'PRODUIT.DEUXPOINTS' |
+              translate}}
+            </small>
+            <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+            <input [ngModel]="good?.productNetWeight" (ngModelChange)="good.productNetWeight = $event"
+                   placeholder="{{'PRODUIT.POIDNETPRODUIT' | translate}}"
+                   id="ProductNetWeight" class="form-control" name="ProductNetWeight" type="text"
+                   #productnetweight="ngModel" [pattern]="numberWithPointPattern"/>
+            <span class="input-group-append">
+          <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.POIDS' | translate}}
+          </span>
+        </span>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="productgrossweight.errors && (productgrossweight.dirty || productgrossweight.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!productgrossweight.errors.pattern">
+                {{'PRODUIT.POIDBRUTPRODUIT' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="productnetweight.errors && (productnetweight.dirty || productnetweight.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!productnetweight.errors.pattern">
+                {{'PRODUIT.POIDNETPRODUIT' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton"
+               *ngIf="onCountryChanged(supplier?.contact.country)">
+            <small class="form-text col-lg-12">{{'PRODUIT.DEEECONTRIBUTION' | translate}}{{'PRODUIT.DEUXPOINTS' |
+              translate}}
+            </small>
+            <span class="input-group-addon">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+            <input id="DeeeContribution" [ngModel]="good?.deeeContribution"
+                   (ngModelChange)="good.deeeContribution = $event" name="DeeeContribution" type="text"
+                   placeholder="{{'PRODUIT.DEEECONTRIBUTION' | translate}}" class="form-control"/>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-lg-12">&nbsp;</small>
+            <nb-checkbox [ngModel]="good?.functionTryMe" (ngModelChange)="good.functionTryMe = $event"
+                         [ngModelOptions]="{standalone: true}">{{'PRODUIT.FUNCTIONTRYME' | translate}}
+            </nb-checkbox>
+          </div>
+        </div>
+
+        <nb-card class="margin15">
+          <nb-card-header>
+            {{'PRODUIT.BATTERIE' | translate}}
+          </nb-card-header>
+          <nb-card-body class="overfloworverride">
+            <div *ngFor="let ga of good?.goodAccus">
+              <div class="full-name-inputs row">
+                <div class="col-md-12 col-lg-6 input-group input-group-sm spacebutton">
+                  <p>{{'PRODUIT.BATTERIESELECTIONNE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}} <b>{{ ga.ref
+                    }}</b></p>
+                  <small class="form-text col-lg-12">{{'PRODUIT.QUANTITEBATTERIE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+                    translate}}
+                  </small>
+                  <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+                  <input [ngModel]="ga?.accuQuantity" (ngModelChange)="ga.accuQuantity = $event"
+                         placeholder="{{'PRODUIT.QUANTITEBATTERIE' | translate}}"
+                         id="QuantityAccus" class="form-control" name="QuantityAccus" type="number"
+                         #quantityaccus="ngModel" [pattern]="numberPattern"/>
+                </div>
+
+                <div class="col-md-12 col-lg-6 input-group input-group-sm spacebutton">
+                  <p class="form-text col-lg-12">&nbsp;</p>
+                  <small class="form-text col-lg-12">{{'PRODUIT.POIDBATTERIE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+                    translate}}
+                  </small>
+                  <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+                  <input [ngModel]="ga?.accuGrossWeight" (ngModelChange)="ga.accuGrossWeight = $event"
+                         placeholder="{{'PRODUIT.POIDBATTERIE' | translate}}"
+                         id="AccusGrossWeight" class="form-control" name="AccusGrossWeight" type="number"
+                         #accusgrossweight="ngModel" [pattern]="numberWithPointPattern"/>
+                  <span class="input-group-append">
+            <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.POIDS' | translate}}
+            </span>
+            </span>
+                </div>
+
+                <div class="col-sm-6 input-group input-group-sm spacebutton">
+                  <small class="form-text col-lg-12">&nbsp;</small>
+                  <nb-checkbox [ngModel]="ga?.isAccusIncluded" (ngModelChange)="ga.isAccusIncluded = $event"
+                               [ngModelOptions]="{standalone: true}">{{'PRODUIT.BATTERIEINCLUSE' | translate}}
+                  </nb-checkbox>
+                </div>
+
+                <div class="col-sm-6 spacebutton">
+                  <small class="form-text col-lg-12">&nbsp;</small>
+                  <button class="btn btn-primary btn-sm redbackgroundcolor" (click)="deleteAccus()">
+                    {{'GENERAL.SUPPRIMER' | translate}}
+                  </button>
+                </div>
+
+                <div *ngIf="ga.ref.toLowerCase() === 'unknown | inconnu'"
+                     class="col-md-12 col-lg-6 input-group input-group-sm spacebutton">
+                  <small class="form-text col-lg-12">{{'ACCUS.REFERENCEAJOUTER' | translate}} <b
+                    class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}
+                  </small>
+                  <span class="input-group-addon">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
+                  <input [ngModel]="good?.unknownAccu" (ngModelChange)="good.unknownAccu = $event"
+                         placeholder="{{'ACCUS.REFERENCEAJOUTER' | translate}}"
+                         id="unknownaccu" class="form-control" name="unknownaccu" type="text" required/>
+                </div>
+              </div>
+            </div>
+            <small [hidden]="good?.goodAccus && good?.goodAccus.length >= 1" class="form-text col-lg-12 redcolor">
+              {{'ACCUS.AIDE' |
+              translate}}
+            </small>
+            <small [hidden]="good?.goodAccus && good?.goodAccus.length >= 1" class="form-text col-lg-12">Choix de la
+              batterie{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <ng-autocomplete [hidden]="good?.goodAccus && good?.goodAccus.length >= 1"
+                             #autocompleter
+                             (selected)="Selected($event)"
+                             [group]="groupAccus"></ng-autocomplete>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card class="margin15 overfloworverride">
+          <nb-card-header>
+            {{'PRODUIT.PILE' | translate}}
+          </nb-card-header>
+          <nb-card-body class="overfloworverride">
+            <div *ngFor="let ba of good?.goodBatteries; let idx = index; ">
+              <div class="full-name-inputs row">
+                <div class="col-md-12 col-lg-4 input-group input-group-sm spacebutton">
+                  <p>{{'PRODUIT.PILESELECTIONNE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}} <b>{{ ba.ref }}</b>
+                  </p>
+                  <small class="form-text col-lg-12">{{'PRODUIT.QUANTITEPILE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+                    translate}}
+                  </small>
+                  <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+                  <input [(ngModel)]="good.goodBatteries[idx].batteryQuantity"
+                         [ngModelOptions]="{standalone: true}"
+                         (ngModelChange)="good.goodBatteries[idx].quantityBattery = $event"
+                         placeholder="{{'PRODUIT.QUANTITEPILE' | translate}}"
+                         class="form-control" type="number"
+                         [pattern]="numberPattern"/>
+                </div>
+                <div class="col-md-12 col-lg-4 input-group input-group-sm spacebutton margin30">
+                  <small class="form-text col-lg-12">&nbsp;</small>
+                  <nb-checkbox [(ngModel)]="good.goodBatteries[idx].isBatteryIncluded"
+                               (ngModelChange)="good.goodBatteries[idx].isBatteryIncluded = $event"
+                               [ngModelOptions]="{standalone: true}">{{'PRODUIT.PILEINCLUSE' | translate}}
+                  </nb-checkbox>
+
+                </div>
+
+                <div class="col-md-12 col-lg-4 margin30">
+                  <small class="form-text col-lg-12">&nbsp;</small>
+                  <button (click)="removeFromBatteryArray(ba)"
+                          class="btn btn-primary btn-sm redbackgroundcolor" aria-hidden="true">
+                    {{'GENERAL.SUPPRIMER' | translate}}
+                  </button>
+                </div>
+
+                <div *ngIf="ba.ref.toLowerCase() === 'unknown | inconnu'"
+                     class="col-md-12 col-lg-4 input-group input-group-sm spacebutton">
+                  <small class="form-text col-lg-12">{{'BATTERY.REFERENCEAJOUTER' | translate}} <b
+                    class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}
+                  </small>
+                  <span class="input-group-addon">
+                    <i class="fa fa-pencil" aria-hidden="true"></i>
+                  </span>
+                  <input [ngModel]="good?.unknownBattery"
+                         (ngModelChange)="good.unknownBattery = $event"
+                         placeholder="{{'BATTERY.REFERENCEAJOUTER' | translate}}"
+                         id="unknownbattery" class="form-control" name="unknownbattery" type="text" required/>
+                </div>
+              </div>
+              <hr/>
+
+            </div>
+            <small [hidden]="good?.goodBatteries && good?.goodBatteries.length >= 3"
+                   class="form-text col-lg-12 redcolor">{{'BATTERY.AIDE' |
+              translate}}
+            </small>
+            <small [hidden]="good?.goodBatteries && good?.goodBatteries.length >= 3"
+                   class="form-text col-lg-12">
+              {{'PRODUIT.PILECHOIX' |
+              translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <ng-autocomplete [hidden]="good?.goodBatteries && good?.goodBatteries.length >= 3"
+                             #autocompleterBatteries
+                             (selected)="SelectedBattery($event)"
+                             [group]="groupBattery"></ng-autocomplete>
+          </nb-card-body>
+        </nb-card>
+
+        <nb-card class="margin15">
+          <nb-card-header>
+            {{'PRODUIT.CHARGEUR' | translate}}
+          </nb-card-header>
+          <nb-card-body>
+            <div class="full-name-inputs row">
+              <div class="col-sm-12 col-md-4 input-group input-group-sm spacebutton">
+                <small class="form-text col-lg-12">{{'PRODUIT.TYPEMOTEUR' | translate}}{{'PRODUIT.DEUXPOINTS' |
+                  translate}}
+                </small>
+                <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+                <input [ngModel]="good?.engineType" (ngModelChange)="good.engineType = $event"
+                       placeholder="{{'PRODUIT.TYPEMOTEUR' | translate}}"
+                       id="EngineType" class="form-control" name="EngineType" type="text"/>
+              </div>
+              <div class="col-sm-12 col-md-4 input-group input-group-sm spacebutton">
+                <small class="form-text col-lg-12">{{'PRODUIT.TYPECHARGEUR' | translate}}{{'PRODUIT.DEUXPOINTS' |
+                  translate}}
+                </small>
+                <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+                <input [ngModel]="good?.chargerType" (ngModelChange)="good.chargerType = $event"
+                       placeholder="{{'PRODUIT.TYPECHARGEUR' | translate}}"
+                       id="ChargerType" class="form-control" name="ChargerType" type="text"/>
+              </div>
+
+              <div class="col-sm-12 col-md-4 input-group input-group-sm spacebutton">
+                <small class="form-text col-lg-12">&nbsp;</small>
+                <nb-checkbox [ngModel]="good?.isChargerIncluded" (ngModelChange)="good.isChargerIncluded = $event"
+                             [ngModelOptions]="{standalone: true}">{{'PRODUIT.CHARGEURINCLUS' | translate}}
+                </nb-checkbox>
+              </div>
+            </div>
+          </nb-card-body>
+        </nb-card>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button class="btn btn-success button spacebutton pull-right" (click)="goToBefore()">{{'GENERAL.PRECEDENT' |
+            translate}}
+          </button>
+        </div>
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button type="button" class="btn btn-success button spacebutton" [disabled]="!f.valid" (click)="updateStep3(true)">{{'GENERAL.SUIVANT' | translate}}
+          </button>
+        </div>
+        <div class="col-12">
+          <button type="button" class="btn button spacebutton pull-right bluecolor" *ngIf="isEdit"
+                  [disabled]="!f.valid" (click)="updateStep3(false)">{{'GENERAL.UPDATE' | translate}}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

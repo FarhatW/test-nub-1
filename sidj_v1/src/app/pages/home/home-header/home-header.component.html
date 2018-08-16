@@ -1,0 +1,28 @@
+
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12 col-lg-6">
+        <a href="#">
+          <img src="../../../assets/logo-JoueClub.png" height="104" width="253"/>
+          <img src="../../../assets/logo_sidj.png" height="90" width="160"/>
+        </a>
+      </div>
+      <!--<div class="col-lg-3">-->
+        <!--<img src="../../../assets/logo_sidj.png" height="90" width="160" style="float:right; margin-top:30px;"/>-->
+      <!--</div>-->
+      <div class="col-xs-12 col-lg-6 row">
+        <div class="col-1 offset-8" style="margin-top:10px;">
+          <div *ngIf="translate.currentLang == 'fr'; else elseBlock">
+            <img src="../../../assets/french.png">
+          </div>
+          <ng-template #elseBlock><img src="../../../assets/english.jpg"></ng-template>
+        </div>
+
+        <select #langSelect  class="col-3 form-control" (change)="setLanguage()">
+          <option *ngFor="let lang of translate.getLangs()" [value]="lang"  [selected]="lang === translate.currentLang">{{ lang == 'fr' ? 'Français' : 'English'  }} </option>
+          <!--"({{ lang }} === 'fr') ? 'francais' : 'anglais'"-->
+        </select>
+      </div>
+    </div>
+  </div>
+

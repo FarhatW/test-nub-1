@@ -1,0 +1,1150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="56d37472-70e2-4d4b-8d04-8c765e575718" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/admin" afterDir="true" />
+      <change afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-routing.module.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.component.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/mapping-user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/mapping-user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/photo.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/photo.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/user.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/user.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-form/agent-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-form/agent-form.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-en.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-en.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-fr.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-fr.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-routing.module.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-routing.module.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-form/supplier-form.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-form/supplier-form.component.html" afterDir="false" />
+    </list>
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <splitter split-orientation="horizontal" split-proportion="0.47306272">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="shared-supplier-list.component.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="317">
+                  <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="136" selection-end-column="3" />
+                  <folding>
+                    <element signature="e#0#66#0" expanded="true" />
+                    <element signature="n#!!block;n#onDeselect#0;n#SharedSupplierListComponent#0" />
+                    <element signature="n#!!block;n#ngOnInit#0;n#SharedSupplierListComponent#0" />
+                    <element signature="n#!!block;n#setPage#0;n#SharedSupplierListComponent#0" />
+                    <element signature="n#!!block;n#onSort#0;n#SharedSupplierListComponent#0" />
+                    <element signature="n#!!block;n#getRows#0;n#SharedSupplierListComponent#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="shared-user-form.component.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="507">
+                  <caret line="218" column="7" lean-forward="true" selection-start-line="218" selection-start-column="7" selection-end-line="218" selection-end-column="7" />
+                  <folding>
+                    <element signature="e#0#60#0" expanded="true" />
+                    <element signature="e#2296#2837#0" />
+                    <element signature="e#2867#3400#0" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="person.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/person.ts">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="savePerson.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/savePerson.ts">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="user.service.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/user.service.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="357">
+                  <caret line="102" column="46" lean-forward="true" selection-start-line="102" selection-start-column="46" selection-end-line="102" selection-end-column="46" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-epse-form.component.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-epse-form/admin-epse-form.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="221">
+                  <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+                  <folding>
+                    <element signature="e#0#50#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pages-menu-fr.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-fr.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="323">
+                  <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-routing.module.ts" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-routing.module.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="527">
+                  <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+                  <folding>
+                    <element signature="e#0#53#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pages-routing.module.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-routing.module.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="442">
+                  <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+                  <folding>
+                    <element signature="e#0#53#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-sidj-form.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-sidj-form/admin-sidj-form.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <caret column="39" selection-start-column="39" selection-end-column="39" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="shared-supplier-list.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="272">
+                  <caret line="16" column="34" lean-forward="true" selection-end-line="149" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-list-form.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="425">
+                  <caret line="97" column="69" selection-start-line="97" selection-start-column="69" selection-end-line="97" selection-end-column="69" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin-list-form.component.ts" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="406">
+                  <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+                  <folding>
+                    <element signature="e#0#66#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="pages-menu-en.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-en.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="391">
+                  <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="29" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="mapping-user.service.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/mapping-user.service.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="255">
+                  <caret line="121" column="11" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="11" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="agents.module.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents.module.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="238">
+                  <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+                  <folding>
+                    <element signature="e#0#41#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="admin.module.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.module.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="408">
+                  <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+                  <folding>
+                    <element signature="e#0#67#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="shared-export-pdf.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-export-pdf/shared-export-pdf.component.html">
+              <provider selected="true" editor-type-id="text-editor" />
+            </entry>
+          </file>
+          <file leaf-file-name="shared-export-pdf.component.ts" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-export-pdf/shared-export-pdf.component.ts">
+              <provider selected="true" editor-type-id="text-editor">
+                <state>
+                  <folding>
+                    <element signature="e#0#66#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="shared-pdf-view.component.html" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-pdf-view/shared-pdf-view.component.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="457">
+                  <caret line="175" column="89" selection-start-line="175" selection-start-column="89" selection-end-line="175" selection-end-column="89" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="TypeScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>bootstrap</find>
+      <find>sets</find>
+      <find>/users/users-view/</find>
+      <find>suppl</find>
+      <find>fobNetPrice</find>
+      <find>cli</find>
+      <find>setNewAgent</find>
+      <find>setNewSupplier</find>
+      <find>agentid</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>'',</replace>
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/suppliers/saveSupplier.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/pages.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-list/supplier-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-list/supplier-list.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-list/agent-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/dashboard/dashboard.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-list/goods-list.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/goods.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/dashboard/dashboard.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-list/goods-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-product-list/shared-product-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-product-list/shared-product-list.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/person.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/savePerson.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/AuthGuard/auth.guard.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/suppliers-routing.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents-routing.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/goods-routing.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/utils/Helper.service.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-file-manager/good-file-manager.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-form/good-form-step-6/good-form-step-6.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/data.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/Photo.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/photo.service.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-form/supplier-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-form/agent-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-epse-form/admin-epse-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-sidj-form/admin-sidj-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-epse-form/admin-epse-form.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-sidj-form/admin-sidj-form.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-routing.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-pdf-view/shared-pdf-view.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-en.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-fr.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/user.service.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.html" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-routing.module.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/mapping-user.service.ts" />
+        <option value="$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.ts" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodeModulesDirectoryManager">
+    <handled-path value="$PROJECT_DIR$/sidj_v1/node_modules" />
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-176" />
+    <option name="y" value="-8" />
+    <option name="width" value="1936" />
+    <option name="height" value="1056" />
+  </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="@core" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="@core" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="@core" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="models" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="@core" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="services" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="admin" type="462c0819:PsiDirectoryNode" />
+              <item name="admin-list-form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="agents" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="agents" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-form" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="agents" type="462c0819:PsiDirectoryNode" />
+              <item name="agent-list" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="shared-export-pdf" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="shared-pdf-view" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="shared" type="462c0819:PsiDirectoryNode" />
+              <item name="shared-supplier-list" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="sidj-front" type="b2602c69:ProjectViewProjectNode" />
+              <item name="sidj-front" type="462c0819:PsiDirectoryNode" />
+              <item name="sidj_v1" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="app" type="462c0819:PsiDirectoryNode" />
+              <item name="pages" type="462c0819:PsiDirectoryNode" />
+              <item name="suppliers" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../sidj.project" />
+    <property name="node.js.detected.package.prettier" value="true" />
+    <property name="node.js.path.for.package.prettier" value="project" />
+    <property name="node.js.selected.package.prettier" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="ts.external.directory.path" value="$PROJECT_DIR$/sidj_v1/node_modules/typescript/lib" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\projets\JCTeam\sidj-front\sidj_v1\src\assets\images" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="FrontSidj" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:4200/" />
+    <configuration default="true" type="JavascriptDebugType" factoryName="JavaScript Debug" uri="http://localhost:4200/">
+      <method>
+        <option name="LaunchBrowser.Before.Run" url="http://localhost:4200/" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="56d37472-70e2-4d4b-8d04-8c765e575718" name="Default" comment="" />
+      <created>1531995634849</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1531995634849</updated>
+      <workItem from="1531995636127" duration="186000" />
+      <workItem from="1531995832795" duration="3061000" />
+      <workItem from="1532070597019" duration="14916000" />
+      <workItem from="1532330037888" duration="13292000" />
+      <workItem from="1532416099511" duration="21609000" />
+      <workItem from="1532691786655" duration="2997000" />
+      <workItem from="1532934585812" duration="6307000" />
+      <workItem from="1532953312443" duration="4957000" />
+      <workItem from="1533021058379" duration="8154000" />
+      <workItem from="1533110087798" duration="6979000" />
+      <workItem from="1533733479117" duration="3795000" />
+      <workItem from="1533798593371" duration="23093000" />
+      <workItem from="1534230729598" duration="7324000" />
+      <workItem from="1534402485105" duration="8363000" />
+    </task>
+    <task id="LOCAL-00001">
+      <created>1532080731889</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1532080731889</updated>
+    </task>
+    <task id="LOCAL-00002">
+      <created>1532417623555</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1532417623555</updated>
+    </task>
+    <task id="LOCAL-00003">
+      <created>1532425273306</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1532425273306</updated>
+    </task>
+    <task id="LOCAL-00004">
+      <created>1532442678113</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1532442678113</updated>
+    </task>
+    <task id="LOCAL-00005">
+      <created>1532502511744</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1532502511744</updated>
+    </task>
+    <task id="LOCAL-00006">
+      <created>1533039937795</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1533039937796</updated>
+    </task>
+    <task id="LOCAL-00007">
+      <created>1533136116222</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1533136116222</updated>
+    </task>
+    <task id="LOCAL-00008">
+      <created>1533799981108</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1533799981108</updated>
+    </task>
+    <task id="LOCAL-00009">
+      <created>1533912240030</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1533912240030</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="125033000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <layout>
+      <window_info anchor="bottom" id="TypeScript" order="7" weight="0.32897604" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2860906" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.32897604" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.17973857" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.20588236" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info active="true" anchor="bottom" id="Messages" order="8" visible="true" weight="0.26797387" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+    </layout>
+    <layout-to-restore>
+      <window_info anchor="bottom" id="Version Control" order="11" weight="0.32897604" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32897604" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.35511065" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="right" id="Commander" order="0" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="TypeScript" order="8" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Terminal" order="9" visible="true" weight="0.18845315" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Messages" order="12" weight="0.26797387" />
+      <window_info id="Favorites" order="2" side_tool="true" />
+    </layout-to-restore>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <ignored-roots>
+      <path value="$PROJECT_DIR$" />
+    </ignored-roots>
+    <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.ts</url>
+          <line>50</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.ts</url>
+          <line>54</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.ts</url>
+          <line>70</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+      </breakpoints>
+      <option name="time" value="9" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/utils/Helper.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="27" column="12" selection-start-line="27" selection-start-column="12" selection-end-line="27" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-agent-list/shared-agent-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="17" selection-start-line="25" selection-start-column="17" selection-end-line="25" selection-end-column="17" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/environments/environment.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="2" selection-start-line="12" selection-start-column="2" selection-end-line="12" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/Files/DTONode.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="17" selection-start-column="17" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-file-manager/good-file-manager.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="47" selection-start-column="47" selection-end-column="47" />
+          <folding>
+            <element signature="n#style#0;n#span#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/files.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="25" column="68" selection-start-line="25" selection-start-column="68" selection-end-line="25" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-file-manager/good-file-manager.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1241">
+          <caret line="88" column="31" selection-start-line="88" selection-start-column="16" selection-end-line="88" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#69#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/node_modules/@nebular/theme/components/user/user.component.metadata.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="371" selection-start-column="255" selection-end-column="371" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/data.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="229">
+          <caret line="44" column="14" selection-start-line="44" selection-start-column="14" selection-end-line="44" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/notification.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="14" column="19" lean-forward="true" selection-start-line="14" selection-start-column="19" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/node_modules/@nebular/theme/components/menu/menu.service.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="75" column="22" lean-forward="true" selection-start-line="75" selection-start-column="22" selection-end-line="75" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="35" selection-start-line="31" selection-start-column="13" selection-end-line="31" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-form/good-form-step-1/good-form-step-1.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="538">
+          <caret line="139" column="21" lean-forward="true" selection-start-line="139" selection-start-column="21" selection-end-line="139" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="4335">
+          <caret line="255" column="30" selection-start-line="255" selection-start-column="30" selection-end-line="255" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/goods/good-form/good-form-step-6/good-form-step-6.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3536">
+          <caret line="230" selection-start-line="230" selection-end-line="230" />
+          <folding>
+            <element signature="n#!!block;n#onBeforeSend#0;n#GoodFormStep6Component#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/Photo.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" selection-start-line="5" selection-end-line="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/good.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="19" column="29" lean-forward="true" selection-start-line="19" selection-start-column="1" selection-end-line="19" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#43#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@theme/components/header/header.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1445">
+          <caret line="98" column="8" lean-forward="true" selection-start-line="98" selection-start-column="8" selection-end-line="98" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/photo.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="27" column="25" selection-start-line="27" selection-start-column="25" selection-end-line="27" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-form/supplier-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="22" lean-forward="true" selection-start-column="22" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/supplier-form/supplier-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="38" selection-start-column="38" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="595">
+          <caret line="35" column="3" selection-start-line="17" selection-start-column="1" selection-end-line="35" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="12" selection-start-line="8" selection-start-column="12" selection-end-line="8" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#40#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-form/agent-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="1" selection-end-line="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-epse-form/admin-epse-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-sidj-form/admin-sidj-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <caret column="39" selection-start-column="39" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-epse-form/admin-epse-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="13" column="13" selection-start-line="13" selection-start-column="13" selection-end-line="13" selection-end-column="13" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="442">
+          <caret line="35" column="20" selection-start-line="35" selection-start-column="20" selection-end-line="35" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="25" column="18" lean-forward="true" selection-start-line="25" selection-start-column="18" selection-end-line="25" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-form/agent-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="15" lean-forward="true" selection-start-line="19" selection-start-column="15" selection-end-line="19" selection-end-column="15" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-sidj-form/admin-sidj-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="204">
+          <caret line="12" column="12" lean-forward="true" selection-start-line="12" selection-start-column="12" selection-end-line="12" selection-end-column="12" />
+          <folding>
+            <element signature="e#0#50#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-list/agent-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" selection-start-line="2" selection-end-line="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-export-pdf/shared-export-pdf.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-export-pdf/shared-export-pdf.component.html">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-pdf-view/shared-pdf-view.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="457">
+          <caret line="175" column="89" selection-start-line="175" selection-start-column="89" selection-end-line="175" selection-end-column="89" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agents.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="238">
+          <caret line="20" column="16" selection-start-line="20" selection-start-column="16" selection-end-line="20" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="408">
+          <caret line="37" column="27" lean-forward="true" selection-start-line="37" selection-start-column="27" selection-end-line="37" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#67#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-fr.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="323">
+          <caret line="19" column="23" selection-start-line="19" selection-start-column="23" selection-end-line="19" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/person.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/models/users/person/savePerson.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-user-form/shared-user-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="507">
+          <caret line="218" column="7" lean-forward="true" selection-start-line="218" selection-start-column="7" selection-end-line="218" selection-end-column="7" />
+          <folding>
+            <element signature="e#0#60#0" expanded="true" />
+            <element signature="e#2296#2837#0" />
+            <element signature="e#2867#3400#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/pages-menu-en.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="391">
+          <caret line="44" column="29" lean-forward="true" selection-start-line="44" selection-start-column="15" selection-end-line="44" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="34" lean-forward="true" selection-end-line="149" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/agents/agent-list/agent-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="102" column="46" lean-forward="true" selection-start-line="102" selection-start-column="46" selection-end-line="102" selection-end-column="46" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/suppliers/suppliers-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="459">
+          <caret line="27" column="21" lean-forward="true" selection-start-line="27" selection-start-column="13" selection-end-line="27" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#39#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/shared/shared-supplier-list/shared-supplier-list.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="317">
+          <caret line="74" lean-forward="true" selection-start-line="74" selection-end-line="136" selection-end-column="3" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+            <element signature="n#!!block;n#onDeselect#0;n#SharedSupplierListComponent#0" />
+            <element signature="n#!!block;n#ngOnInit#0;n#SharedSupplierListComponent#0" />
+            <element signature="n#!!block;n#setPage#0;n#SharedSupplierListComponent#0" />
+            <element signature="n#!!block;n#onSort#0;n#SharedSupplierListComponent#0" />
+            <element signature="n#!!block;n#getRows#0;n#SharedSupplierListComponent#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-routing.module.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="35" column="23" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
+          <folding>
+            <element signature="e#0#53#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="425">
+          <caret line="97" column="69" selection-start-line="97" selection-start-column="69" selection-end-line="97" selection-end-column="69" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/@core/data/services/mapping-user.service.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="121" column="11" selection-start-line="121" selection-start-column="2" selection-end-line="121" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/sidj_v1/src/app/pages/admin/admin-list-form/admin-list-form.component.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="69" column="25" lean-forward="true" selection-start-line="69" selection-start-column="25" selection-end-line="69" selection-end-column="25" />
+          <folding>
+            <element signature="e#0#66#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

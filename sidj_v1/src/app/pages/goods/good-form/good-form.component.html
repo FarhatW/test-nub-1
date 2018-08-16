@@ -1,0 +1,16 @@
+<div class="row" xmlns="http://www.w3.org/1999/html">
+  <div class="col-9">
+    <ngx-breadcrumb [customTitle]="true"></ngx-breadcrumb>
+    <router-outlet></router-outlet>
+  </div>
+  <div class="col-3" *ngIf="prod">
+    <nb-card>
+      <nb-card-header> {{'GENERAL.INFORMATIONSGENERALE' | translate}}</nb-card-header>
+      <nb-card-body>
+        <p>{{ 'GENERAL.INSTRUCTION' | translate}}</p>
+        <p>{{ 'GENERAL.INSTRUCTIONOBLIGATOIRE' | translate}}</p>
+      </nb-card-body>
+    </nb-card>
+    <ngx-good-form-supplier-display *ngIf="user.userType !== 'Supplier'"></ngx-good-form-supplier-display>
+  </div>
+</div>

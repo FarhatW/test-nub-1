@@ -1,0 +1,36 @@
+
+<div class="row">
+  <div class="col-md-3">
+  </div>
+</div>
+<div class="row" *ngFor="let error of pagedItems; let i = index; let odd = odd">
+  <div class="col-md-3" [ngClass]="[ odd ? 'danger' : '' ]">{{ error.goodId }}</div>
+  <div class="col-9">
+    <div class="row" *ngFor="let err of error.errors">
+      <div> {{ err }}
+      </div>
+    </div>
+  </div>
+</div>
+  <div *ngIf="pager.pages && pager.pages.length > 1" class="pagination-container">
+    <ul>
+      <div class="btn-group btn-tn btn-toggle-group btn-outline-toggle-group">
+        <li [ngClass]="{disabled:pager.currentPage === 1}" class="btn btn-outline-success">
+          <a (click)="setPage(1)"> << </a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === 1}" class="btn btn-outline-success ">
+          <a (click)="setPage(pager.currentPage - 1)"> < </a>
+        </li>
+        <li *ngFor="let page of pager.pages" [ngClass]="{active:pager.currentPage === page}"
+            class="btn btn-outline-success">
+          <a (click)="setPage(page)">{{page}}</a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="btn btn-outline-success ">
+          <a (click)="setPage(pager.currentPage + 1)"> > </a>
+        </li>
+        <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}" class="btn btn-outline-success ">
+          <a (click)="setPage(pager.totalPages)"> >> </a>
+        </li>
+      </div>
+    </ul>
+  </div>

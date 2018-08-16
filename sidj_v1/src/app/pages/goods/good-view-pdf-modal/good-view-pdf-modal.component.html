@@ -1,0 +1,17 @@
+
+<div class="modal-header" style="width: 1080px; background-color:#fff;">
+  <nb-actions size="medium">
+    <nb-action icon="fa fa-download" (click)="addProductToArr()"></nb-action>
+  </nb-actions>
+
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+
+</div>
+<div class="modal-body" style="width: 1080px; background-color:#fff;">
+  <kendo-pdf-export #pdf paperSize="A2">
+   <ngx-shared-pdf-view [good]="good" ></ngx-shared-pdf-view>
+  </kendo-pdf-export>
+</div>
+

@@ -1,0 +1,13 @@
+<nb-card>
+  <nb-card-header>
+    <div *ngIf="currentSupplier; else unset">
+      {{ 'SUPPLIERDISPLAY.TITLE' | translate }}  {{currentSupplier?.title}} ID: {{currentSupplier?.id}}
+    </div>
+    <ng-template #unset>
+    {{ 'SUPPLIERDISPLAY.UNSETTITLE' | translate }}
+    </ng-template>
+    </nb-card-header>
+  <nb-card-body>
+    <p>{{ currentSupplier ? ('SUPPLIERDISPLAY.BODY' | translate) : 'SUPPLIERDISPLAY.UNSETBODY' | translate}}</p>
+  </nb-card-body>
+</nb-card>

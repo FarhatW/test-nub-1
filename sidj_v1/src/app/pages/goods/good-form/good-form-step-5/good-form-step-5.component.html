@@ -1,0 +1,38 @@
+<form name="myForm" #f="ngForm" (ngSubmit)="submit()" novalidate (keydown)="keyDown($event)">
+  <nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-lg-6">
+        {{'PRODUIT.COMMENTAIRES' | translate}}
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="col-10 offset-1">
+
+      <div class="input-group input-group-sm spacebutton">
+        <small class="form-text col-lg-12">{{'PRODUIT.COMMENTAIRE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+        <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+        <!--<input [ngModel]= "goods?.comments" (ngModelChange)="goods.comments = $event" placeholder="{{'PRODUIT.COMMENTAIRE' | translate}}"-->
+               <!--id="Comment" class="form-control" name="Comment" type="text"/>-->
+        <textarea [ngModel]= "good?.comments" (ngModelChange)="good.comments = $event"
+                  placeholder="{{'PRODUIT.COMMENTAIRE' | translate}}" class="form-control" rows="5"
+                  name="Comment" id="Comment"></textarea>
+      </div>
+
+    </div>
+  </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button class="btn btn-success button spacebutton pull-right" (click)="goToBefore()">{{'GENERAL.PRECEDENT' | translate}}</button>
+        </div>
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button class="btn btn-success button spacebutton" [disabled]="!f.valid">{{'GENERAL.ENVOYER' | translate}}</button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

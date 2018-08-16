@@ -1,0 +1,53 @@
+<nb-card>
+  <nb-card-header>BATTERIES ET PILES</nb-card-header>
+  <nb-card-body>
+  </nb-card-body>
+</nb-card>
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-body>
+        <label>Articles par page</label>
+        <select class='select-option' required [(ngModel)]='optionSelected'
+                (ngModelChange)='onOptionsSelected($event)'>
+          <option class='option' *ngFor='let option of options' [value]="option">{{ option }}</option>
+        </select>
+        <button class="btn btn-success btn-tn pull-right" (click)="goToNewItem(false)">Nouvelle Pile</button>
+        <button class="btn btn-danger btn-tn pull-right" (click)="goToNewItem(true)">Nouvelle Batterie</button>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-6" *ngIf="isActiveChild">
+    <nb-card >
+      <nb-card-body>
+        <router-outlet></router-outlet>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>
+
+
+<div class="row">
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header> Accus
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-accus-list [pageSize]="optionSelected"
+                        (accusId)="goToAccus($event)"
+        ></ngx-accus-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-6">
+    <nb-card>
+      <nb-card-header> Piles
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-battery-list [pageSize]="optionSelected"
+                           (batteryId)="goToBattery($event)"
+        ></ngx-battery-list>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

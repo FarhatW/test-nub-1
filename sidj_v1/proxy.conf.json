@@ -1,0 +1,11 @@
+
+{
+  "/api": {
+    "target":"https://test.images.sidj.joueclub.fr/",
+    "secure": false,
+    "pathRewrite": {
+      "^/api": ""
+    },
+    "changeOrigin": true
+  }
+}

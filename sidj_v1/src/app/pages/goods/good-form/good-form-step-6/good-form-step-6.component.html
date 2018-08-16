@@ -1,0 +1,95 @@
+<form name="myForm" #f="ngForm" (ngSubmit)="submit()" novalidate (keydown)="keyDown($event)">
+<nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-lg-6">
+        {{'PRODUIT.PHOTO' | translate}}
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="col-lg-10 offset-1">
+      <span class="backgroundred">{{errorMessage}}</span>
+      <div class="row">
+          <div class="col-md-6">
+            <nb-card>
+              <nb-card-header><b>{{ 'FILEMANAGER.MODE.TTTLE' | translate}}</b><br></nb-card-header>
+              <nb-card-body>
+
+               1/ <b>{{ 'FILEMANAGER.SELECTIONFILES.TITLE' | translate}}</b>
+                  <ul><li>{{ 'FILEMANAGER.SELECTIONFILES.BODY' | translate}} </li></ul>
+               2/ <b>{{ 'FILEMANAGER.LOADFILES.TITLE' | translate}}</b>
+                <ul><li>{{ 'FILEMANAGER.LOADFILES.BODY' | translate}}</li></ul>
+               3/ <b>{{ 'FILEMANAGER.CANCEL.TITLE' | translate}}</b>
+                <ul><li>{{ 'FILEMANAGER.CANCEL.BODY' | translate}}</li></ul>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-header>&nbsp;</nb-card-header>
+            <nb-card-body>
+              1/ <b>{{ 'FILEMANAGER.PREVIEW.TITLE' | translate}}</b>
+              <ul><li>{{ 'FILEMANAGER.PREVIEW.BODY' | translate}}</li></ul>
+
+            </nb-card-body>
+          </nb-card>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <nb-card>
+            <nb-card-header>{{ 'FILEMANAGER.FILEADDTITLE' | translate}}</nb-card-header>
+            <nb-card-body>
+              <p-fileUpload name="myfile[]"
+                            [url]="urlWithGoodsNumber"
+                            accept=".jpg"
+                            uploadLabel="{{'FILEMANAGER.FILELOADBTN' | translate}}"
+                            cancelLabel="{{ 'FILEMANAGER.CANCELBTN' | translate}}"
+                            chooseLabel="{{ 'FILEMANAGER.FILESELECTBTN' | translate}}"
+                            (onBeforeUpload)="onBeforeUploadHandler($event)"
+                            (onUpload)="onUploadHandler($event)"
+                            (onBeforeSend)="onBeforeSend($event)">
+              </p-fileUpload>
+            </nb-card-body>
+          </nb-card>
+        </div>
+        <div class="col-md-6">
+          <nb-card>
+          <nb-card-header>{{ 'PRODUIT.VISUALISATION' | translate}}</nb-card-header>
+          <nb-card-body>
+          <img *ngIf="good?.picture && user.userType !== 'Person'; else admin " src="{{urlPhoto + user?.nameid }}/{{good?.picture}}" class="img-fluid pictureclass">
+            <ng-template #admin>
+              <img  *ngIf="good?.picture" [src]="checkSupplier(good.supplierId)" class="img-fluid pictureclass">
+            </ng-template>
+          </nb-card-body>
+            <nb-card-footer>
+              <input *ngIf="good?.picture" class="btn btn-tn backgroundred" (click)="deleteItemById()" value="{{ 'GENERAL.SUPPRIMER' | translate}}">
+            </nb-card-footer>
+          </nb-card>
+        </div>
+      </div>
+      <div class="input-group input-group-sm spacebutton">
+        <small class="form-text col-lg-12">{{'PRODUIT.CHARGERIMAGE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+        <span class="input-group-addon">
+              <i class="fa fa-file-image-o" aria-hidden="true"></i>
+            </span>
+        <select [ngModel]= "good?.imageFrom" (ngModelChange)="good.imageFrom = $event" class="form-control" name="TypeAge">
+          <option *ngFor="let a of goodImageFrom" [value]="a.name">{{isFrench? a.frenchName : a.name}}</option>
+        </select>
+      </div>
+
+    </div>
+  </nb-card-body>
+  <nb-card-footer>
+    <div class="row">
+      <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+        <button class="btn btn-success button spacebutton pull-right" (click)="goToBefore()">{{'GENERAL.PRECEDENT' | translate}}</button>
+      </div>
+      <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+        <button class="btn btn-success button spacebutton" [disabled]="!f.valid">{{'GENERAL.SUIVANT' | translate}}</button>
+      </div>
+    </div>
+  </nb-card-footer>
+</nb-card>
+</form>

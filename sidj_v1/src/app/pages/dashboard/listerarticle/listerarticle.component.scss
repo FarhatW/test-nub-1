@@ -1,0 +1,111 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../../../../node_modules/@swimlane/ngx-datatable/release/assets/icons.css';
+
+.datatable-icon-right::before {
+  background-color:red !important;
+  height:150px !important;
+  display:block;
+}
+
+.datatable-icon-right {
+  background-color:red !important;
+  height:150px !important;
+  display:block;
+}
+
+.ngx-datatable.bootstrap .datatable-footer .datatable-pager .datatable-icon-right {
+  background-color:red !important;
+}
+.fontstyle {
+  font-size:20px;
+  color:#000;
+}
+
+.bordertab {
+  border: 1px solid #000;
+}
+
+.borderright {
+  border-right:1px solid #000;
+}
+
+.bordertop {
+  border-top:1px solid #000;
+}
+
+.margintab50 {
+  margin-top:50px;
+}
+
+.margintab {
+  margin-top:30px;
+  margin-bottom:0;
+  padding-left:0;
+}
+
+.margintab0 {
+  margin-bottom:0;
+  padding-left:0;
+}
+
+.margin10 {
+  margin-top:10px;
+}
+
+.margin1020 {
+  margin-top:10px;
+  margin-left:20px;
+}
+
+.margin1010 {
+  margin: 10px 0;
+}
+
+.marginbottom0 {
+  margin-bottom:0;
+}
+ .margintop0 {
+   margin-top:0;
+ }
+
+.bluecolor {
+  background-color:#00378a;
+}
+
+.redcolor {
+  background-color: #e31319;
+}
+
+.paginationwidth {
+  width:80px;
+}
+
+.clear {
+  clear:both;
+}
+
+.letterstyle {
+  margin-left:5px;
+  line-height:20px;
+  font-size:18px;
+  font-family: arial;
+  letter-spacing: 4px;
+  margin-top:3px;
+}
+
+.letterstyledeux {
+  margin-left:5px;
+  line-height:20px;
+  font-size:18px;
+  font-family: arial;
+  margin-top:3px;
+}
+
+.letterstyletrois {
+  margin-left:5px;
+  font-family: arial;
+}
+
+nb-card {
+  transform: translate3d(0, 0, 0);
+}

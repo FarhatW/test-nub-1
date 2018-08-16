@@ -1,0 +1,15 @@
+<component name="libraryTable">
+  <library name="tsconfig$roots" type="javaScript">
+    <properties>
+      <sourceFilesUrls>
+        <item url="file://$PROJECT_DIR$/sidj_v1/node_modules/@angular" />
+        <item url="file://$PROJECT_DIR$/sidj_v1/node_modules/@nebular" />
+      </sourceFilesUrls>
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/sidj_v1/node_modules/@angular" />
+      <root url="file://$PROJECT_DIR$/sidj_v1/node_modules/@nebular" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

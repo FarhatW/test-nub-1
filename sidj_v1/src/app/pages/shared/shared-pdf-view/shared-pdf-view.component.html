@@ -1,0 +1,414 @@
+<div class="row">
+  <div class="offset-1 col-7"></div>
+  <div class="col-3 font18">{{ "PRODUIT.CONFIDENTIEL" | translate }}</div>
+  <div class="offset-1 col-5 font15">{{"PRODUIT.DATECREATION" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.createdOn}}</div>
+  <div class="col-5 font15">{{"PRODUIT.DATEMODIFICATION" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.updatedOn}}</div>
+  <div class="col-10 offset-1 bordertab">
+    <div class="row paddingtop10">
+      <div class="col-4">
+        <p class="offset-1 font15 fontbold">{{"FOURNISSEUR.PDFTITRE" | translate }}</p>
+        <p class="font15 blackcolor">
+          {{ "FOURNISSEUR.PDFSOCIETE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.contact.company}}  <br/>
+          {{ "FORM.ADRESSE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.contact.address1 + ' ' + supplier?.contact.zipCode}}  <br/>
+          {{ "FOURNISSEUR.PDFCONTACT" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.firstName + ' ' + supplier?.lastName}}<br/>
+          {{ "FOURNISSEUR.PDFTEL" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.contact.phone}}<br/>
+          <b>{{ "FOURNISSEUR.PDFEMAIL" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.mail}}</b> <br/>
+        </p>
+        <p *ngIf="agent?.firstName" class="offset-1 font15 fontbold">{{ "FOURNISSEUR.PDFTITREAGENT" | translate }}</p>
+        <p *ngIf="agent?.firstName" class="font15 blackcolor">
+          {{ "FOURNISSEUR.PDFSOCIETE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{agent?.contact.company}}  <br/>
+          {{ "FOURNISSEUR.ADRESSE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{agent?.contact.address1 + ' ' + agent?.contact.zipCode}}  <br/>
+          {{ "FOURNISSEUR.PDFCONTACT" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{agent?.firstName + ' ' + agent?.lastName}}<br/>
+          {{ "FOURNISSEUR.PDFTEL" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{agent?.contact.phone}}<br/>
+          <b>{{ "FOURNISSEUR.PDFEMAIL" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{agent?.mail}}</b> <br/>
+        </p>
+      </div>
+      <div class="col-4">
+        <img src="../../../../assets/logo_sidj.png" class="img-fluid sidjlogo"/>
+      </div>
+      <div class="col-4">
+        <p class="font15 blackcolor">
+          <b>Société Internationale de Diffusion du  Jouet <br/>
+            26, rue Roger Touton <br/>
+            cedex n° 37 <br/>
+            33083 BORDEAUX CEDEX, <br/>
+            FRANCE <br/>
+            Tél. 00 33 5 56 69 26 26 <br/>
+            Fax : 00 33 5 56 69 26 13 <br/>
+            Email : commercialsidj@joueclub.fr</b>
+        </p>
+      </div>
+    </div>
+  </div>
+  <h5 class="offset-1 col-10 margintab">{{ "PRODUIT.PRODUIT" | translate }}</h5>
+  <div class="col-10 offset-1 bordertab">
+    <div class="row">
+      <div class="col-4 borderright font15">
+        {{ "PRODUIT.REFARTICLE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.reference}}
+      </div>
+      <div class="col-4 borderright font15">
+        {{ "PRODUIT.LIBELLEPRODUIT" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.name}}
+      </div>
+      <div class="col-4 font15">
+        {{ "PRODUIT.GENCOD" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.gencod}}
+      </div>
+      <div class="col-8 borderright">
+        <div class="row">
+          <div class="col-6 borderright bordertop font15">
+            {{ "PRODUIT.REFDOUANIERE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.customsReference}}
+          </div>
+          <div class="col-6 bordertop font15">
+            {{ "PRODUIT.PAYSORIGINE" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{ good?.countryCode }}
+          </div>
+          <div class="col-12 bordertop font15 textjustify height130">
+            {{ "PRODUIT.DESCRIPTIONPRODUIT" | translate }}{{ "PRODUIT.DEUXPOINTS" | translate }} {{good?.description}}
+          </div>
+        </div>
+      </div>
+      <div class="col-4 bordertop text-center">
+        <div class="marginforbarcode">
+          <ngx-barcode [bc-value]="good?.gencod" bc-element-type="img" [bc-height]="60" [bc-font-size]="12"></ngx-barcode>
+        </div>
+      </div>
+    </div>
+  </div>
+  <h5 class="col-6 offset-1 margintab row">{{ "PRODUIT.DETAILSPRODUITS" | translate }}</h5>
+  <h5 class="col-3 offset-1 margintab"></h5>
+  <div class="col-6 offset-1 bordertab">
+    <div class="row">
+      <div class="col-6 borderright font15">
+        {{ "PRODUIT.DIMENSIONPRODUIT" | translate }} (cm)
+      </div>
+      <div class="col-6 font15">
+        {{good?.productDimension}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.DIMENSIONDELABOITE" | translate }} (cm)
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.boxDimension}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.COULEURS" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.colors}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.MODELES" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.models}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.LANGUEPACKAGING" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.packagingLanguage}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.LANGUEMANUEL" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.manualLanguage}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.LANGUEPRODUIT" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.productLanguage}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.AGE" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.age}}
+        <i *ngIf="good?.age">
+              <span *ngIf="good?.ageType == 'Year(s)'; else elseblockage">
+              {{ 'GENERAL.ANNEE' | translate}}
+              </span>
+          <ng-template #elseblockage>{{'GENERAL.MOIS' | translate}}</ng-template>
+        </i>
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.PRODUITSEXE" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{ good?.gender }}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.POIDNETPRODUIT" | translate }} (kg)
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.productNetWeight}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.POIDBRUTPRODUIT" | translate }} (kg)
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.productGrossWeight}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.DEEECONTRIBUTION" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.deeeContribution}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.FUNCTIONTRYME" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+              <span *ngIf="good?.functionTryMe; else elseBlockTryMe">
+              {{ 'GENERAL.OUI' | translate}}
+              </span>
+        <ng-template #elseBlockTryMe>{{ 'GENERAL.NON' | translate}}</ng-template>
+      </div>
+    </div>
+  </div>
+  <div class="col-3 offset-1 bordertab font15">
+    {{ "PRODUIT.PHOTO" | translate }} : <br/>
+    <img src="{{urlPhoto + (supplier?.agentId ? agent?.id : good?.supplierId) }}/{{good?.picture}}" class="img-fluid productimg">
+    <!--<img src="https://test.sidj.joueclub.fr/Fournisseurs/57/2764328230k.jpg" class="img-fluid" style="max-width:300px; max-height:125px; margin: 33px auto; display:block" >-->
+  </div>
+  <h5 class="offset-1 col-5 margintab0 row">
+    <label class="col-6 margintab">{{ "PRODUIT.PRIXETCONDITIONS" | translate }}</label>
+    <label class="col-6 margintab paddingleft128">INCOTERM</label></h5>
+  <h5 class="col-5 margintab paddingleft275">{{"PRODUIT.LOGISTIQUEPDF" | translate}}</h5>
+  <div class="col-5 offset-1 bordertop borderleft borderbottom">
+    <div class="row">
+      <div class="col-6 borderright font15">
+        <b>{{ "PRODUIT.DEVISE" | translate }} :</b> {{good?.currency.toUpperCase()}}
+      </div>
+      <div class="col-2 borderright font12 textcenter paddingtop2">
+        <b>FOB</b>
+      </div>
+      <div class="col-2 borderright font12 textcenter paddingtop2">
+        <b>DDP</b>
+      </div>
+      <div class="col-2 font10 textcenter paddingtop2">
+        <b>EX-WORKS</b>
+      </div>
+      <div class="col-6 bordertop borderright font15">
+        <b>{{ "PRODUIT.PRIXBRUT" | translate }}</b>
+      </div>
+      <div class="col-2 bordertop borderright font15 textcenter">
+        {{good?.fobGrossPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-2 bordertop borderright font15 textcenter">
+        {{good?.ddpGrossPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-2 bordertop font15 textcenter">
+        {{good?.exWorksGrossPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        <b>{{ "PRODUIT.PRIXNET" | translate }}</b>
+      </div>
+      <div class="col-2 borderright bordertop font15 textcenter">
+        {{good?.fobNetPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-2 borderright bordertop font15 textcenter">
+        {{good?.ddpNetPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-2 bordertop font15 textcenter">
+        {{good?.exWorksNetPrice | number: '1.2-2'}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.MINIMUMQUANTITE" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.minimumQuantity}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.LIEUDECHARGEMENT" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.departurePlace}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.TERMEPAIEMENT" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.paymentTerms}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.DATEVALIDITE" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.dateOfValidity}}
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{ "PRODUIT.EXCLUSIVITEJC" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+                <span *ngIf="good?.isExclusivityJc; else elseBlock">
+                {{'GENERAL.OUI' | translate}}
+                </span>
+        <ng-template #elseBlock>{{ 'GENERAL.NON' | translate}}</ng-template>
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{  "PRODUIT.EXCLUSIVITEBOITE" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+                <span *ngIf="good?.isSpecialBoxJc; else elseBlock">
+                {{'GENERAL.OUI' | translate}}
+                </span>
+        <ng-template #elseBlock>{{ 'GENERAL.NON' | translate}}</ng-template>
+      </div>
+      <div class="col-6 borderright bordertop font15">
+        {{  "PRODUIT.DATEDISPONIBILITEPRODUIT" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.availabilityProduct}}
+      </div>
+      <div class="col-6 borderright bordertop font15 heightforenglishblockalignement">
+        {{ "PRODUIT.TEMPSLIVRAISON" | translate }}
+      </div>
+      <div class="col-6 bordertop font15">
+        {{good?.shipmentTime}} <i *ngIf="good?.shipmentTime">{{"GENERAL.JOURS" | translate }}</i>
+      </div>
+    </div>
+  </div>
+  <div class="col-5 bordertab">
+    <div class="row padding1015">
+      <div class="row technicalraw">
+        <div class="col-6 font15"><b>{{"PRODUIT.QUANTITEOUTERC" | translate }}</b></div>
+        <div class="col-6 font15"><b>{{"PRODUIT.QUANTITEINNERC" | translate }}</b></div>
+        <div class="col-5 text-center font15">{{good?.outerColisage}}</div>
+        <div class="col-5 offset-1 text-center font15">{{good?.innerColisage}}</div>
+      </div>
+
+      <div class="row technicalraw">
+        <div class="col-6 font15"><b>{{  "PRODUIT.NOMBRE20" | translate }}</b></div>
+        <div class="col-6 font15"><b>{{ "PRODUIT.NOMBRE40" | translate }}</b></div>
+        <div class="col-5 text-center font15">{{good?.itemsQuantity20}}</div>
+        <div class="col-5 offset-1 text-center font15">{{good?.itemsQuantity40}}</div>
+      </div>
+
+      <div class="row technicalraw">
+        <div class="col-6 font15"><b>{{"PRODUIT.POIDSBRUTC" | translate }} (kg)</b></div>
+        <div class="col-6 font15"><b>{{"PRODUIT.POIDSNETC" | translate }} (kg)</b></div>
+        <div class="col-5 text-center font15">{{good?.colisageGrossWeight}}</div>
+        <div class="col-5 offset-1 text-center font15">{{good?.colisageNetWeight}}</div>
+      </div>
+
+      <div class="row technicalraw">
+        <div class="col-6 font15"><b>{{  "PRODUIT.DIMENSIONOUTERC" | translate }} (cm)</b></div>
+        <div class="col-6 font15"><b>{{  "PRODUIT.VOLUMEC" | translate }} (m&#179;)</b></div>
+        <div class="col-5 text-center font15">{{good?.outerCartonDimension}}</div>
+        <div class="col-5 offset-1 text-center font15">{{good?.outCartonCbm}}</div>
+      </div>
+    </div>
+  </div>
+  <h5 class="col-10 offset-1 margintab">{{  "PRODUIT.DETAILSTECHNIQUES" | translate }}</h5>
+  <div class="col-10 offset-1 bordertab">
+    <div class="row">
+      <div class="col-3 borderright font15">
+      </div>
+      <div class="col-2 borderright font15">
+        {{  "PRODUIT.TYPE" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{ "PRODUIT.QUANTITE" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{ "PRODUIT.INCLUS" | translate }} : <br/>
+      </div>
+      <div class="col-2 font15">
+        {{ "PRODUIT.POIDS" | translate }} : <br/>
+      </div>
+    </div>
+  </div>
+  <div class="col-10 offset-1 borderbottom borderleft borderright" *ngFor="let a of good.goodAccus">
+    <div class="row">
+      <div class="col-3 borderright font15">
+        {{"PRODUIT.ACCUS" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{a?.ref.toLowerCase() === 'unknown' ? isFrench ? 'Inconnu' : 'Unknown' : a?.ref}}
+      </div>
+      <div class="col-2 borderright font15">
+        {{a?.accuQuantity}}
+      </div>
+      <div class="col-2 borderright font15">
+                <span *ngIf="a?.isAccusIncluded; else elseBlockAccusIncluded">
+                {{ 'GENERAL.OUI' | translate}}
+                </span>
+        <ng-template #elseBlockAccusIncluded>{{ 'GENERAL.NON' | translate}}</ng-template>
+      </div>
+      <div class="col-2 font15">
+        {{a?.accusGrossWeight}}
+      </div>
+    </div>
+  </div>
+  <div class="col-10 offset-1 borderbottom borderleft borderright" *ngFor="let b of good.goodBatteries">
+    <div class="row">
+      <div class="col-3 borderright font15">
+        {{"PRODUIT.PILES" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{b.ref.toLowerCase() === 'unknown' ? isFrench ? 'Inconnu' : 'Unknown' : b?.ref}}
+      </div>
+      <div class="col-2 borderright font15">
+        {{b?.batteryQuantity}}
+      </div>
+      <div class="col-2 borderright font15">
+                <span *ngIf="b?.isBatteryIncluded; else elseBlockBatteryIncluded">
+                {{'GENERAL.OUI' | translate}}
+                </span>
+        <ng-template #elseBlockBatteryIncluded>{{'GENERAL.NON' | translate}}</ng-template>
+      </div>
+      <div class="col-2 font15">
+      </div>
+    </div>
+  </div>
+  <div class="col-10 offset-1 borderbottom borderleft borderright">
+    <div class="row">
+      <div class="col-3 borderright font15">
+        {{"PRODUIT.MOTEUR" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{good?.engineType}}
+      </div>
+      <div class="col-2 borderright font15">
+
+      </div>
+      <div class="col-2 borderright font15">
+
+      </div>
+      <div class="col-2 font15">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-10 offset-1 borderbottom borderleft borderright">
+    <div class="row">
+      <div class="col-3 borderright font15">
+        {{  "PRODUIT.CHARGEUR" | translate }} : <br/>
+      </div>
+      <div class="col-2 borderright font15">
+        {{good?.chargerType}}
+      </div>
+      <div class="col-2 borderright font15">
+
+      </div>
+      <div class="col-2 borderright font15">
+                <span *ngIf="good?.isChargerIncluded; else elseBlockChargerIncluded">
+                {{ 'GENERAL.OUI' | translate}}
+                </span>
+        <ng-template #elseBlockChargerIncluded>{{'GENERAL.NON' | translate}}</ng-template>
+      </div>
+      <div class="col-2 font15">
+
+      </div>
+    </div>
+  </div>
+  <div class="col-10 offset-1 bordertab margintab">
+    <div class="row margin10">
+      <div class="col-12 font15 textjustify height200">{{"PRODUIT.COMMENTAIREPDF" | translate }} :
+        {{good?.comments}}
+        <i *ngIf="good.unknownAccu"><br/><b>{{"ACCUS.NEWACCUS" | translate }}{{"PRODUIT.DEUXPOINTS" | translate }} {{good?.unknownAccu}}</b><br/></i>
+        <i *ngIf="good.unknownBattery"><br *ngIf="!good.unknownAccu"/><b>{{"BATTERY.NEWBATTERY" | translate }}{{"PRODUIT.DEUXPOINTS" | translate }} {{good?.unknownBattery}}</b></i>
+      </div>
+    </div>
+  </div>
+</div>

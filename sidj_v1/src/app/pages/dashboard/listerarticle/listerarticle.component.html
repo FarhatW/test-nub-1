@@ -1,0 +1,666 @@
+<div class="row">
+  <div class="col-md-5">
+    <nb-card>
+      <nb-card-header>
+        <div class="row">
+          <div class="col-lg-6">
+            {{ isAdmin ?  'LISTE DES PRODUITS DU FOURNISSEUR ID : ' + id :  'LISTERARTICLE.LISTER' | translate}}
+          </div>
+        </div>
+      </nb-card-header>
+    </nb-card>
+  </div>
+  <div class="col-md-7">
+    <div *ngIf="!isAdmin; else elseBlockAdmin">
+      <h5 class="marginbottom0">{{ "LISTERARTICLE.DLLABEL" | translate }} :</h5>
+      <span>
+          <button class="btn btn-tn bluecolor" (click)="toPDF(accusColumns, accus, accusCount, isFrench ? 'Batteries' : 'Accus', isFrench)">{{ "FIELDSEXPLANATION.BTNACCUS" | translate }}</button>
+          <button class="btn btn-tn bluecolor" (click)="toPDF(batteryColumns, batteries, batteryCount, isFrench ? 'Piles' : 'Battery', isFrench)">{{ "FIELDSEXPLANATION.BTNBATTERY" | translate }}</button>
+          <button class="btn btn-tn bluecolor" (click)="toPDF(countryColumns, countries, countryCount, isFrench ? 'Pays' : 'Country', isFrench)">{{ "FIELDSEXPLANATION.BTNCOUNTRY" | translate }}</button>
+      </span>
+    </div>
+    <ng-template #elseBlockAdmin>
+      <button (click)="goToSupplierList()" class="btn btn-tn bluecolor">Retour à la liste fournisseurs</button>
+    </ng-template>
+  </div>
+</div>
+
+<nb-card>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-6">
+          <h5 class="marginbottom0">{{ isAdmin ? 'Téléchargement PDF :' : "LISTERARTICLE.PDFLABEL" | translate }} :</h5>
+        <p>test <i class="test testfa"></i></p>
+        <button class="btn btn-success btn-tn margintop0" [disabled]="rowsForPdf.length <= 0" (click)="getAllProductToPdf(false)">
+          {{ isAdmin ? 'Tous les produits' : "LISTERARTICLE.DLALL" | translate}}
+        </button>
+        <button class="btn btn-tn margintop0 bluecolor" [disabled]="goodsToPdf.length <= 0" (click)="getAllProductToPdf(true)"> {{ isAdmin ? 'Sélection' : "LISTERARTICLE.DLSELECTED" |  translate}}</button>
+      </div>
+      <div class="col-6 form-group">
+        <select class='form-control pull-right paginationwidth' required [(ngModel)]='optionSelected' (ngModelChange)='onOptionsSelected($event)'>
+          <option class='option' *ngFor='let option of options' [value]="option">{{option}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="clear"></div>
+    <ngx-datatable
+      #goodTable
+      [rows]="rows"
+      [columns]="columns"
+      class="bootstrap"
+      [columnMode]="'force'"
+      [headerHeight]="50"
+      [footerHeight]="50"
+      [rowHeight]="'auto'"
+      (page)='setPage($event)'
+      [externalPaging]="true"
+      [externalSorting]="true"
+      [count]="page.totalElements"
+      [offset]="page.pageNumber"
+      (sort)="onSort($event)"
+      [limit]="page.size">
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="Select.">
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <nb-checkbox [value]="value" (change)="onSelect($event, row)"></nb-checkbox>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="Id">
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="GoodsNumber">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Référence' : 'Reference'}}</span>
+        </ng-template>
+        <!--<ng-template ngx-datatable-cell-template let-rowIndex="rowIndex" let-value="value" let-row="row">-->
+            <!--<span-->
+              <!--title="Double click to edit"-->
+              <!--(dblclick)="editing[rowIndex + '-name'] = true"-->
+              <!--*ngIf="!editing[rowIndex + '-name']">-->
+              <!--{{value}}-->
+            <!--</span>-->
+          <!--<input-->
+            <!--autofocus-->
+            <!--(blur)="updateValue($event, 'name', rowIndex)"-->
+            <!--*ngIf="editing[rowIndex+ '-name']"-->
+            <!--type="text"-->
+            <!--[value]="value"-->
+          <!--/>-->
+        <!--</ng-template>-->
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="Gencod">
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="ProductName">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Libellé' : 'Product Name'}}</span>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [sortable]="true"
+        [canAutoResize]="true"
+        [draggable]="true"
+        [resizeable]="true"
+        name="updatedOn"
+        [flexGrow]="1">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Mis à jour le' : 'Updated on'}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          {{value | date:'d MMMM , y'}}
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [width]="100"
+        [sortable]="true"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        name="Modifier">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Modifier' : 'Modify'}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <p data-placement="top" data-toggle="tooltip" title="View">
+            <button class="btn btn-tn bluecolor" (click)="update(row.id)">
+              <span class="ion-edit"></span>
+            </button>
+          </p>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [width]="100"
+        [sortable]="true"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        name="Télécharger">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Télécharger' : 'Download'}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <p data-placement="top" data-toggle="tooltip" title="View">
+            <button class="btn btn-tn bluecolor" (click)="getProductToPdf(row.goodsNumber)">
+              <span class="fa fa-print"></span>
+            </button>
+          </p>
+        </ng-template>
+      </ngx-datatable-column>
+      <ngx-datatable-column
+        [width]="100"
+        [sortable]="true"
+        [canAutoResize]="false"
+        [draggable]="false"
+        [resizeable]="false"
+        name="Supprimer">
+        <ng-template let-column="column" ngx-datatable-header-template>
+          <span>{{isFrench? 'Supprimer' : 'Delete'}}</span>
+        </ng-template>
+        <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+          <p data-placement="top" data-toggle="tooltip" title="View">
+            <button class="btn btn-tn redcolor" (click)="showDeleteModal(row.id)">
+              <span class="ion-ios-trash-outline"></span>
+            </button>
+          </p>
+        </ng-template>
+      </ngx-datatable-column>
+      <!--<ngx-datable-footer>-->
+      <!--<datatable-pager-->
+      <!--[pagerLeftArrowIcon]="'datatable-icon-left'"-->
+      <!--[pagerRightArrowIcon]="'datatable-icon-right'"-->
+      <!--[pagerPreviousIcon]="'datatable-icon-prev'"-->
+      <!--[pagerNextIcon]="'datatable-icon-skip'"-->
+      <!--[page]="curPage"-->
+      <!--[size]="pageSize"-->
+      <!--[count]="rowCount"-->
+      <!--[hidden]="!((rowCount / pageSize) > 1)"-->
+      <!--(change)="myTable.onFooterPage($event)">-->
+      <!--</datatable-pager>-->
+      <!--</ngx-datable-footer>-->
+    </ngx-datatable>
+
+    <div *ngFor="let c of rowsTransformToPdf" id="show" class="rorow" style="opacity:0; min-width:1547px; display:block;" #rorow>
+      <div class="{{c.goodsNumber}} margintab50" id="{{c.goodsNumber}}">
+        <div class="row">
+
+          <div class="offset-1 col-5" style="font-size:24px;">{{ isAdmin ? 'Date de création' : "PRODUIT.DATECREATION" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.createdOn}}</div>
+          <div class="col-5" style="font-size:24px;">{{ isAdmin ? 'Date de modifiation' : "PRODUIT.DATEMODIFICATION" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.updatedOn}}</div>
+          <div class="col-10 offset-1 bordertab">
+            <div class="row" style="padding-top:10px;">
+              <div class="col-4">
+                <p class="offset-1" style="font-size:24px; font-weight: bold;">{{ isAdmin ? 'COORDONNEES FOURNISSEUR' : "FOURNISSEUR.PDFTITRE" | translate }}</p>
+                <p style="font-size:20px; color:#000;">
+                  {{ isAdmin ? 'Société' : "FOURNISSEUR.PDFSOCIETE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.supplierSocietyName}}  <br/>
+                  {{ isAdmin ? 'Adresse' : "FOURNISSEUR.ADRESSE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.supplierAddress}}  <br/>
+                  {{ isAdmin ? 'Contact' : "FOURNISSEUR.PDFCONTACT" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.supplierName}}<br/>
+                  {{ isAdmin ? 'Téléphone' : "FOURNISSEUR.PDFTEL" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.supplierTel}}<br/>
+                  <b>{{ isAdmin ? 'E-mail' : "FOURNISSEUR.PDFEMAIL" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.supplierMail}}</b> <br/>
+                </p>
+                <p *ngIf="supplier?.agentName" class="offset-1" style="font-size:24px; font-weight: bold;">{{ "FOURNISSEUR.PDFTITREAGENT" | translate }}</p>
+                <p *ngIf="supplier?.agentName" style="font-size:20px; color:#000;">
+                  {{ isAdmin ? 'Société' : "FOURNISSEUR.PDFSOCIETE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.agentSocietyName}}  <br/>
+                  {{ isAdmin ? 'Adresse' : "FOURNISSEUR.ADRESSE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.agentAddress}}  <br/>
+                  {{ isAdmin ? 'Contact' : "FOURNISSEUR.PDFCONTACT" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.agentName}}<br/>
+                  {{ isAdmin ?  'Téléphone' : "FOURNISSEUR.PDFTEL" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.agentTel}}<br/>
+                  <b>{{ isAdmin ? 'E-mail' : "FOURNISSEUR.PDFEMAIL" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{supplier?.agentMail}}</b> <br/>
+                </p>
+              </div>
+              <div class="col-4">
+                <img src="../../../../assets/logo_sidj.png" height="104" width="163" class="img-fluid" style="position: absolute; top: 35px; width:350px;"/>
+              </div>
+              <div class="col-4">
+                <p style="font-size:20px; color:#000;">
+                  <b>Société Internationale de Diffusion du  Jouet <br/>
+                    26, rue Roger Touton <br/>
+                    cedex n° 37 <br/>
+                    33083 BORDEAUX CEDEX, <br/>
+                    FRANCE <br/>
+                    Tél. 00 33 5 56 69 26 26 <br/>
+                    Fax : 00 33 5 56 69 26 13 <br/>
+                    Email : commercialsidj@joueclub.fr</b>
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!--<div class="col-10 offset-1 bordertab margintab" *ngIf="suppliers?.agentName">-->
+            <!--<div class="row">-->
+              <!--<div class="col-4 borderright fontstyle">-->
+                <!--{{ "AGENT.SOCIETE" | translate }} : {{suppliers?.agentCountry}}-->
+              <!--</div>-->
+              <!--<div class="col-4 borderright fontstyle">-->
+                <!--{{ "AGENT.NOM" | translate }} : {{suppliers?.agentName}}-->
+              <!--</div>-->
+              <!--<div class="col-4 fontstyle">-->
+                <!--{{ "AGENT.ADRESSE" | translate }} : {{suppliers?.agentAddress}} {{suppliers?.agentAreaCode}} {{suppliers?.agentTown}} {{suppliers?.agentCountry}}-->
+              <!--</div>-->
+
+              <!--<div class="col-8 borderright">-->
+                <!--<div class="row">-->
+                  <!--<div class="col-6 borderright bordertop fontstyle">-->
+                    <!--{{ "AGENT.TEL" | translate }} : {{suppliers?.agentTel}}-->
+                  <!--</div>-->
+                  <!--<div class="col-6 bordertop fontstyle">-->
+                    <!--{{ "AGENT.MAIL" | translate }} : {{ suppliers?.agentMail}}-->
+                  <!--</div>-->
+                <!--</div>-->
+              <!--</div>-->
+            <!--</div>-->
+          <!--</div>-->
+
+          <h5 class="offset-1 col-10 margintab">{{ isAdmin ? 'PRODUIT' : "PRODUIT.PRODUIT" | translate }}</h5>
+          <div class="col-10 offset-1 bordertab">
+            <div class="row">
+              <div class="col-4 borderright fontstyle">
+                {{ isAdmin ? 'Référence article' : "PRODUIT.REFARTICLE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.goodsNumber}}
+              </div>
+              <div class="col-4 borderright fontstyle">
+                {{ isAdmin ? 'Libellé' : "PRODUIT.LIBELLEPRODUIT" | translate }}{{ isAdmin ? ' : ' :
+                "PRODUIT.DEUXPOINTS" | translate }} {{c?.name}}
+              </div>
+              <div class="col-4 fontstyle">
+                {{ isAdmin ? 'Code-barres' : "PRODUIT.GENCOD" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.gencod}}
+              </div>
+
+              <div class="col-8 borderright">
+                <div class="row">
+                  <div class="col-6 borderright bordertop fontstyle">
+                    {{ isAdmin ? 'Référence douanière' :  "PRODUIT.REFDOUANIERE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.customsReference}}
+                  </div>
+                  <div class="col-6 bordertop fontstyle">
+                    {{ isAdmin ? 'Pays d\'origine' :  "PRODUIT.PAYSORIGINE" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{ isFrench ? c?.countryFr : c?.countryEn}}
+                    <!--{{isFrench? countryFr : countryEn}}-->
+                  </div>
+                  <div class="col-12 bordertop fontstyle" style="text-align:justify; height:130px;">
+                    {{ isAdmin ? 'Description du produit' : "PRODUIT.DESCRIPTIONPRODUIT" | translate }}{{ isAdmin ? ' :
+                    ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.description}}
+                  </div>
+                </div>
+              </div>
+              <div class="col-4 bordertop text-center">
+                <ngx-barcode [bc-value]="c?.gencod" [bc-display-value]="true" [bc-height]="62" [bc-font-size]="20"></ngx-barcode>
+              </div>
+            </div>
+          </div>
+
+          <h5 class="col-6 offset-1 margintab row">{{ isAdmin ? 'DETAILS PRODUITS' :  "PRODUIT.DETAILSPRODUITS" | translate }}</h5>
+          <h5 class="col-3 offset-1 margintab"></h5>
+
+          <div class="col-6 offset-1 bordertab">
+            <div class="row">
+              <div class="col-6 borderright fontstyle">
+                {{ isAdmin ? 'Dimensions du produit' : "PRODUIT.DIMENSIONPRODUIT" | translate }} (cm)
+              </div>
+              <div class="col-6 fontstyle">
+                {{c?.productDimension}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Dimensions de la boite' : "PRODUIT.DIMENSIONDELABOITE" | translate }} (cm)
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.boxDimension}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Couleurs disponibles' : "PRODUIT.COULEURS" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.colors}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Modèles disponibles' : "PRODUIT.MODELES" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.models}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Langue de l\'emballage' : "PRODUIT.LANGUEPACKAGING" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{ isFrench ? c?.packagingLanguageFr : c?.packagingLanguageEn}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Langue de la notice' : "PRODUIT.LANGUEMANUEL" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{ isFrench ? c?.manualLanguageFr : c?.manualLanguageEn}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Langue du produit' : "PRODUIT.LANGUEPRODUIT" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{ isFrench ? c?.productLanguageFr : c?.productLanguageEn}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Age' : "PRODUIT.AGE" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.age}}
+                <i *ngIf="c?.age">
+                <span *ngIf="c?.isYear; else elseblockage">
+                  {{ isAdmin ? 'An(s)' : 'GENERAL.ANNEE' | translate}}
+                </span>
+                <ng-template #elseblockage>{{isAdmin ? 'Mois' :'GENERAL.MOIS' | translate}}</ng-template>
+                </i>
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Genre' : "PRODUIT.PRODUITSEXE" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{ isFrench ? c?.productSexeFr : c?.productSexeEn}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Poids net du produit' : "PRODUIT.POIDNETPRODUIT" | translate }} (kg)
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.productNetWeight}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Poids brut du produit' : "PRODUIT.POIDBRUTPRODUIT" | translate }} (kg)
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.productGrossWeight}}
+              </div>
+
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Contribution DEEE' : "PRODUIT.DEEECONTRIBUTION" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.deeeContribution}}
+              </div>
+
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Fonction \'TryMe\'' : "PRODUIT.FUNCTIONTRYME" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                <span *ngIf="c?.functionTryMe; else elseBlockTryMe">
+                  {{ isAdmin ? 'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlockTryMe>{{isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+            </div>
+          </div>
+          <div class="col-3 offset-1 bordertab fontstyle">
+            {{ isAdmin ?  'Image' : "PRODUIT.PHOTO" | translate }} : <br/>
+            <img src="{{urlPhoto + c?.userId }}/{{c?.showImage}}" class="img-fluid" style="max-width:300px; max-height:200px; margin: 50px auto; display:block" >
+            <!--<img src="https://test.sidj.joueclub.fr/Fournisseurs/57/2764328230k.jpg" class="img-fluid" style="max-width:300px; max-height:200px; margin: 50px auto; display:block" >-->
+          </div>
+
+          <h5 class="offset-1 col-5 margintab0 row">
+            <label class="col-6 margintab">{{ isAdmin ? 'PRIX ET CONDITIONS' : "PRODUIT.PRIXETCONDITIONS" | translate }}</label>
+            <label class="col-6 margintab" style="padding-left:128px;">INCOTERM</label></h5>
+          <h5 class="col-5 margintab" style="padding-left:275px">{{"PRODUIT.LOGISTIQUEPDF" | translate}}</h5>
+          <div class="col-5 offset-1 bordertab">
+            <div class="row">
+              <div class="col-6 borderright fontstyle">
+                <b>{{ isAdmin ? 'Devise' : "PRODUIT.DEVISE" | translate }} :</b> {{c?.currency.toUpperCase()}}
+              </div>
+              <div class="col-2 borderright fontstyle" style="font-size:15px;">
+                <b>FOB</b>
+              </div>
+              <div class="col-2 borderright fontstyle" style="font-size:15px;">
+                <b>DDP</b>
+              </div>
+              <div class="col-2 fontstyle" style="font-size:15px;">
+                <b>EX-WORKS</b>
+              </div>
+              <div class="col-6 bordertop borderright fontstyle">
+                <b>{{ isAdmin ? 'Prix brut' : "PRODUIT.PRIXBRUT" | translate }}</b>
+              </div>
+              <div class="col-2 bordertop borderright fontstyle">
+                {{c?.fobGrossPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-2 bordertop borderright fontstyle">
+                {{c?.ddpGrossPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-2 bordertop fontstyle">
+                {{c?.exWorksGrossPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                <b>{{ isAdmin ? 'Prix net' : "PRODUIT.PRIXNET" | translate }}</b>
+              </div>
+              <div class="col-2 borderright bordertop fontstyle">
+                {{c?.fobNetPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-2 borderright bordertop fontstyle">
+                {{c?.ddpNetPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-2 bordertop fontstyle">
+                {{c?.exWorksNetPrice | number: '1.2-2'}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Quantité minimum de commande (pièces)' : "PRODUIT.MINIMUMQUANTITE" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.minimumQuantity}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Lieu de départ' : "PRODUIT.LIEUDECHARGEMENT" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.departurePlace}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Conditions de paiement' : "PRODUIT.TERMEPAIEMENT" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.paymentTerms}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Date de validité de l\'offre' : "PRODUIT.DATEVALIDITE" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.dateOfValidity}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Exclusivité JouéClub' :  "PRODUIT.EXCLUSIVITEJC" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                <span *ngIf="c?.isExclusivityJc; else elseBlock">
+                  {{ isAdmin ? 'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlock>{{ isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Packaging JouéClub' : "PRODUIT.EXCLUSIVITEBOITE" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                <span *ngIf="c?.isSpecialBoxJc; else elseBlock">
+                  {{ isAdmin ? 'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlock>{{isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Date de disponibilité du produit' : "PRODUIT.DATEDISPONIBILITEPRODUIT" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.availabilityProduct}}
+              </div>
+              <div class="col-6 borderright bordertop fontstyle">
+                {{ isAdmin ? 'Délai d\'approvisionnement à rupture de la commande' : "PRODUIT.TEMPSLIVRAISON" | translate }}
+              </div>
+              <div class="col-6 bordertop fontstyle">
+                {{c?.shipmentTime}} <i *ngIf="c?.shipmentTime">{{ isAdmin ? 'jours' : "GENERAL.JOURS" | translate }}</i>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-5 bordertab">
+            <div class="row" style="padding-top:15px;padding-left:15px;">
+              <div class="row" style="height:70px; width:100%;">
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Carton extérieur' : "PRODUIT.QUANTITEOUTERC" | translate }}</b></div>
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Carton intérieur' : "PRODUIT.QUANTITEINNERC" | translate }}</b></div>
+              <div class="col-5 text-center fontstyle">{{c?.outerColisage}}</div>
+              <div class="col-5 offset-1 text-center fontstyle">{{c?.innerColisage}}</div>
+              </div>
+
+              <div class="row" style="height:70px; width:100%;">
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Quantité par container 20\'' : "PRODUIT.NOMBRE20" | translate }}</b></div>
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Quantité par container 40\'' : "PRODUIT.NOMBRE40" | translate }}</b></div>
+              <div class="col-5 text-center fontstyle">{{c?.itemsQuantity20}}</div>
+              <div class="col-5 offset-1 text-center fontstyle">{{c?.itemsQuantity40}}</div>
+              </div>
+
+              <div class="row" style="height:70px; width:100%;">
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Poids Brut master carton' : "PRODUIT.POIDSBRUTC" | translate }} (kg)</b></div>
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Poids net master carton' : "PRODUIT.POIDSNETC" | translate }} (kg)</b></div>
+              <div class="col-5 text-center fontstyle">{{c?.colisageGrossWeight}}</div>
+              <div class="col-5 offset-1 text-center fontstyle">{{c?.colisageNetWeight}}</div>
+              </div>
+
+              <div class="row" style="height:70px; width:100%;">
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Dimensions master carton' : "PRODUIT.DIMENSIONOUTERC" | translate }} (cm)</b></div>
+              <div class="col-6 fontstyle"><b>{{ isAdmin ? 'Volume master carton' : "PRODUIT.VOLUMEC" | translate }} (m&#179;)</b></div>
+              <div class="col-5 text-center fontstyle">{{c?.outerCartonDimension}}</div>
+              <div class="col-5 offset-1 text-center fontstyle">{{c?.outCartonCbm}}</div>
+              </div>
+          </div>
+          </div>
+
+          <h5 class="col-10 offset-1 margintab">{{ isAdmin ? 'DETAILS TECHNIQUES' : "PRODUIT.DETAILSTECHNIQUES" | translate }}</h5>
+          <div class="col-10 offset-1 bordertab">
+            <div class="row">
+              <div class="col-3 borderright fontstyle">
+
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{ isAdmin ? 'Type' : "PRODUIT.TYPE" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{ isAdmin ? 'Quantité' : "PRODUIT.QUANTITE" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{ isAdmin ? 'Inclus' : "PRODUIT.INCLUS" | translate }} : <br/>
+              </div>
+              <div class="col-2 fontstyle">
+                {{ isAdmin ? 'Poids brut (Kg)' : "PRODUIT.POIDS" | translate }} : <br/>
+              </div>
+            </div>
+            </div>
+
+          <div class="col-10 offset-1 bordertab" *ngFor="let a of c.GoodAccu">
+            <div class="row">
+              <div class="col-3 borderright fontstyle">
+                {{ isAdmin ? 'Batterie' : "PRODUIT.ACCUS" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{a?.accusRef.toLowerCase() === 'unknown' ? isFrench ? 'Inconnu' : 'Unknown' : a?.accusRef}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{a?.quantityAccus}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+                <span *ngIf="a?.isAccuIncluded; else elseBlockAccusIncluded">
+                  {{isAdmin ?  'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlockAccusIncluded>{{isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+              <div class="col-2 fontstyle">
+                {{a?.accuGrossWeight}}
+              </div>
+            </div>
+          </div>
+
+              <div class="col-10 offset-1 bordertab" *ngFor="let b of c.goodsBattery">
+                <div class="row">
+              <div class="col-3 borderright fontstyle">
+                {{ isAdmin ? 'Piles' :  "PRODUIT.PILES" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{b.batteryRef.toLowerCase() === 'unknown' ? isFrench ? 'Inconnu' : 'Unknown' : b?.batteryRef}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{b?.quantityBattery}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+                <span *ngIf="b?.isBatteryIncluded; else elseBlockBatteryIncluded">
+                  {{ isAdmin ? 'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlockBatteryIncluded>{{ isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+              <div class="col-2 fontstyle">
+              </div>
+              </div>
+            </div>
+
+          <div class="col-10 offset-1 bordertab">
+            <div class="row">
+              <div class="col-3 borderright fontstyle">
+                {{ isAdmin ? 'Moteur' : "PRODUIT.MOTEUR" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{c?.engineType}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+
+              </div>
+              <div class="col-2 borderright fontstyle">
+
+              </div>
+              <div class="col-2 fontstyle">
+
+              </div>
+            </div>
+          </div>
+
+          <div class="col-10 offset-1 bordertab">
+            <div class="row">
+              <div class="col-3 borderright fontstyle">
+                {{ isAdmin ? 'Chargeur' : "PRODUIT.CHARGEUR" | translate }} : <br/>
+              </div>
+              <div class="col-2 borderright fontstyle">
+                {{c?.chargerType}}
+              </div>
+              <div class="col-2 borderright fontstyle">
+
+              </div>
+              <div class="col-2 borderright fontstyle">
+                <span *ngIf="c?.isChargerIncluded; else elseBlockChargerIncluded">
+                  {{isAdmin ? 'Oui' : 'GENERAL.OUI' | translate}}
+                </span>
+                <ng-template #elseBlockChargerIncluded>{{ isAdmin ? 'Non' : 'GENERAL.NON' | translate}}</ng-template>
+              </div>
+              <div class="col-2 fontstyle">
+
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-10 offset-1 bordertab margintab">
+            <div class="row margin1010">
+              <div class="col-12 fontstyle" style="text-align:justify; height:200px;">{{ isAdmin ? 'Commentaires
+                (Conditions SAV, Remises, Gratuités, Prix dégressifs selon quantités commandées etc, ...)' :
+                "PRODUIT.COMMENTAIREPDF" | translate }} :
+                {{c?.comments}}
+                <i *ngIf="c.unknownAccu"><br/><b>{{ isAdmin ? 'Ajouter la nouvelle référence de la batterie' : "ACCUS.NEWACCUS" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.unknownAccu}}</b><br/></i>
+                <i *ngIf="c.unknownBattery"><br *ngIf="!c.unknownAccu"/><b>{{ isAdmin ? 'Ajouter la nouvelle référence de la pile' : "BATTERY.NEWBATTERY" | translate }}{{ isAdmin ? ' : ' : "PRODUIT.DEUXPOINTS" | translate }} {{c?.unknownBattery}}</b></i>
+               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>

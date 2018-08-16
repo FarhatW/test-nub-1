@@ -1,0 +1,43 @@
+
+<div class="header-container"
+     [class.left]="position === 'normal'"
+     [class.right]="position === 'inverse'">
+  <div class="logo-containter">
+    <a (click)="toggleSidebar()" href="#" class="navigation"><i class="nb-menu"></i></a>
+    <div class="logo" (click)="goToHome()"> <img src="../../../assets/logo_sidj.png" style="width: 9%"/></div>
+  </div>
+</div>
+
+<div class="col-lg-3">
+  <div class="row">
+    <div class="col-1" style="margin-top:5px;">
+      <div *ngIf="!isFrench; else elseBlock">
+        <img src="../../../assets/english.jpg">
+      </div>
+      <ng-template #elseBlock><img src="../../../assets/french.png"></ng-template>
+    </div>
+      <select #langSelect  class="col-3 offset-1 form-control" (change)="setLanguage()">
+      <option *ngFor="let lang of translate.getLangs()" [value]="lang"  [selected]="lang === translate.currentLang">{{ lang == 'fr' ? 'Français' : 'English'  }}</option>
+    </select>
+  </div>
+</div>
+
+
+
+<nb-user
+  nbContextMenuTag="header-menu"
+  [name]="user?.firstName"
+  [title]="user?.mail"
+  [nbContextMenu]="items"
+  [picture]="userType ==='supplier' ? url +photo?.filePath :''"
+  size="large"
+  badgeText=""
+  badgeStatus="success"
+  badgePosition="bottom right"
+         >
+</nb-user>
+
+
+
+
+

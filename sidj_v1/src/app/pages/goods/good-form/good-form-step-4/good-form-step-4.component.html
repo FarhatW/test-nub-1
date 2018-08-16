@@ -1,0 +1,192 @@
+<form name="myForm" #f="ngForm" novalidate (keydown)="keyDown($event)">
+  <nb-card>
+  <nb-card-header>
+    <div class="row">
+      <div class="col-lg-6">
+        {{'PRODUIT.LOGISTIQUE' | translate}}
+      </div>
+    </div>
+  </nb-card-header>
+  <nb-card-body>
+    <div class="col-10 offset-1">
+
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.QUANTITEOUTERC' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.outerColisage" (ngModelChange)="good.outerColisage = $event" placeholder="{{'PRODUIT.QUANTITEOUTERC' | translate}}"
+                 id="OuterColisage" class="form-control" name="OuterColisage" type="text"
+                 #outercolisage="ngModel" [pattern]="numberWithPointPattern"/>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.QUANTITEINNERC' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.innerColisage" (ngModelChange)="good.innerColisage = $event" placeholder="{{'PRODUIT.QUANTITEINNERC' | translate}}"
+                 id="InnerColisage" class="form-control" name="InnerColisage" type="text"
+                 #innerColisage="ngModel" [pattern]="numberWithPointPattern"/>
+        </div>
+      </div>
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="outercolisage.errors && (outercolisage.dirty || outercolisage.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!outercolisage.errors.pattern">
+              {{'PRODUIT.QUANTITEOUTERC' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="innerColisage.errors && (innerColisage.dirty || innerColisage.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!innerColisage.errors.pattern">
+              {{'PRODUIT.QUANTITEINNERC' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.NOMBRE20' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.itemsQuantity20" (ngModelChange)="good.itemsQuantity20 = $event" placeholder="{{'PRODUIT.NOMBRE20' | translate}}"
+                 id="ItemsQuantity20" class="form-control" name="ItemsQuantity20" type="text"
+                 #itemsquantity20="ngModel" [maxlength]="7" [pattern]="numberPattern"/>
+        </div>
+
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.NOMBRE40' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.itemsQuantity40" (ngModelChange)="good.itemsQuantity40 = $event" placeholder="{{'PRODUIT.NOMBRE40' | translate}}"
+                 id="ItemsQuantity40" class="form-control" name="ItemsQuantity40" type="text"
+                 #itemsquantity40="ngModel" [maxlength]="7" [pattern]="numberPattern"/>
+        </div>
+      </div>
+
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="itemsquantity20.errors && (itemsquantity20.dirty || itemsquantity20.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!itemsquantity20.errors.pattern">
+              {{'PRODUIT.NOMBRE20' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="itemsquantity40.errors && (itemsquantity40.dirty || itemsquantity40.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!itemsquantity40.errors.pattern">
+              {{'PRODUIT.NOMBRE40' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.POIDSBRUTC' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.colisageGrossWeight" (ngModelChange)="good.colisageGrossWeight = $event" placeholder="{{'PRODUIT.POIDSBRUTC' | translate}}"
+                 id="ColisageGrossWeight" class="form-control" name="ColisageGrossWeight" type="text"
+                 #colisagegrossweight="ngModel" [pattern]="numberWithPointPattern" />
+          <span class="input-group-append">
+          <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.POIDS' | translate}}
+          </span>
+        </span>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.POIDSNETC' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+                     <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </span>
+          <input [ngModel]= "good?.colisageNetWeight" (ngModelChange)="good.colisageNetWeight = $event" placeholder="{{'PRODUIT.POIDSNETC' | translate}}"
+                 id="ColisageNetWeight" class="form-control" name="ColisageNetWeight" type="text"
+                 #colisagenetweight="ngModel" [pattern]="numberWithPointPattern"/>
+          <span class="input-group-append">
+          <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.POIDS' | translate}}
+          </span>
+        </span>
+        </div>
+      </div>
+
+      <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="colisagegrossweight.errors && (colisagegrossweight.dirty || colisagegrossweight.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!colisagegrossweight.errors.pattern">
+              {{'PRODUIT.POIDSBRUTC' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm">
+          <div *ngIf="colisagenetweight.errors && (colisagenetweight.dirty || colisagenetweight.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!colisagenetweight.errors.pattern">
+              {{'PRODUIT.POIDSNETC' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group input-group-sm spacebutton">
+        <small class="form-text col-lg-12">{{'PRODUIT.DIMENSIONOUTERC' | translate}} {{'PRODUIT.DEUXPOINTS' | translate}} (Format : Lxlxh) cm</small>
+        <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+        <input [ngModel]= "good?.outerCartonDimension"
+               (ngModelChange)="good.outerCartonDimension = $event"
+               placeholder="{{'PRODUIT.DIMENSIONOUTERC' | translate}}"
+               id="OuterCartonDimension" class="form-control"
+               name="OuterCartonDimension" type="text"
+               #outercartondimension="ngModel"
+               [pattern]="dimensionPattern"
+               (change)="onVolumeChanged(good.outerCartonDimension)"/>
+        <div *ngIf="outercartondimension.errors && (outercartondimension.dirty || outercartondimension.touched)"
+             class="alert alert-danger col-12">
+          <div [hidden]="!outercartondimension.errors.pattern">
+            {{'PRODUIT.DIMENSIONOUTERC' | translate}} {{'ERROR.COLIS' | translate}}
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group input-group-sm spacebutton">
+        <small class="form-text col-lg-12">{{'PRODUIT.VOLUMEC' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}} m3</small>
+        <span class="input-group-addon">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+        <input [ngModel]= "good?.outCartonCbm" (ngModelChange)="good.outCartonCbm = $event" placeholder="{{'PRODUIT.VOLUMEC' | translate}}"
+               id="OutCartonCbm" class="form-control greycolor" name="OutCartonCbm" type="text"
+               readonly/>
+      </div>
+
+    </div>
+  </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+      <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+      <button class="btn btn-success button spacebutton pull-right" (click)="goToBefore()">{{'GENERAL.PRECEDENT' | translate}}</button>
+      </div>
+      <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+      <button type="button" class="btn btn-success button spacebutton" [disabled]="!f.valid" (click)="updateStep4(true)">{{'GENERAL.SUIVANT' | translate}}</button>
+      </div>
+        <div class="col-12">
+          <button type="button" class="btn button spacebutton pull-right bluecolor" *ngIf="isEdit"
+                  [disabled]="!f.valid" (click)="updateStep4(false)">{{'GENERAL.UPDATE' | translate}}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

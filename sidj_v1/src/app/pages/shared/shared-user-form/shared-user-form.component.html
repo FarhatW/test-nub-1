@@ -1,0 +1,268 @@
+<div class="row">
+          <div class="col-lg-12">
+            <nb-card>
+              <nb-card-header>
+                <div class="row">
+                  <div class="col-lg-6">
+                    {{ getTitle() | translate}}
+                  </div>
+                </div>
+              </nb-card-header>
+              <nb-card-body>
+                <div class="col-lg-12">
+                  <form name="myForm" #f="ngForm" (ngSubmit)="submit()" novalidate>
+                    <div class="row">
+                      <div class="col-2 offset-3" [hidden]= "userType !== 'supplier' || !photo">
+                        <img [src]="url+ photo?.filePath" class="img-thumbnail img-responsive" width="200px" height="200px">
+                      </div>
+
+                      <div [ngClass]="!photo ? 'col-3 offset-3' : 'col-3'" [hidden]= "userType !== 'supplier'">
+                        <input type="file" class="custom-file-input" id="validatedCustomFile" (change)="uploadPhoto()" #fileInput>
+                        <label class="custom-file-label" for="validatedCustomFile">Choose a file...</label>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-lg-6 offset-3 form-group">
+                        <div class="input-group input-group-sm">
+                          <small class="form-text col-12">{{'FORM.SOCIETE' | translate}} :</small>
+                          <span class="input-group-addon">
+                     <i class="fa fa-building-o" aria-hidden="true"></i>
+                    </span>
+                          <input id="companyName" [minlength]="5"
+                                 [maxlength]="30"
+                                 required [(ngModel)]="user?.contact.company"
+                                 name="companyName"
+                                 type="text"
+                                 placeholder="{{'FORM.SOCIETE' | translate}} *"
+                                 class="form-control"
+                                 #companyName="ngModel"/>
+                          <div *ngIf="companyName.errors && (companyName.dirty || companyName.touched)"
+                               class="alert alert-danger col-12">
+                            <div [hidden]="!companyName.errors.required">
+                              {{ 'FORM.SOCIETE' | translate }} {{'ERROR.REQUIS' | translate}}
+                            </div>
+                            <div [hidden]="!companyName.errors.minlength">
+                              {{'FORM.SOCIETE' | translate}} {{'ERROR.MIN' | translate}}
+                            </div>
+                            <div [hidden]="!companyName.errors.maxlength">
+                              {{'FORM.SOCIETE' | translate}} {{'ERROR.MAX' | translate}}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group input-group-sm spacebutton">
+                          <small class="form-text col-12">{{'FORM.LASTNAME' | translate}} :</small>
+                          <span class="input-group-addon alignicone">
+                     <i class="fa fa-user-o" aria-hidden="true"></i>
+                    </span>
+                          <input id="lastName" [minlength]="5" [maxlength]="30" required
+                                 [ngModel]="user?.lastName"
+                                 (ngModelChange)="user.lastName=$event"
+                                 name="lastName"
+                                 type="text" placeholder="{{ 'FORM.LASTNAME' | translate}} *"
+                                 class="form-control" #lastName="ngModel"/>
+                          <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"
+                               class="alert alert-danger col-12">
+                            <div [hidden]="!lastName.errors.required">
+                              {{ 'FORM.LASTNAME' | translate }} {{ 'ERROR.REQUIS' | translate}}
+                            </div>
+                            <div [hidden]="!lastName.errors.minlength">
+                              {{ 'FORM.LASTNAME' | translate }} {{'ERROR.MIN' | translate}}
+                            </div>
+                            <div [hidden]="!lastName.errors.maxlength">
+                              {{ 'FORM.LASTNAME' | translate }} {{'ERROR.MAX' | translate}}
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group input-group-sm spacebutton">
+                          <small class="form-text col-12">{{'FORM.FIRSTNAME' | translate}} :</small>
+                          <span class="input-group-addon alignicone">
+                     <i class="fa fa-user-o" aria-hidden="true"></i>
+                    </span>
+                          <input id="firstName" [minlength]="5" [maxlength]="30" required
+                                 [ngModel]="user?.firstName"
+                                 (ngModelChange)="user.firstName = $event"
+                                 name="firstName"
+                                 type="text" placeholder="{{'FORM.FIRSTNAME' | translate}} *"
+                                 class="form-control" #firstName="ngModel"/>
+                          <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)"
+                               class="alert alert-danger col-12">
+                            <div [hidden]="!firstName.errors.required">
+                              {{'FORM.FIRSTNAME' | translate}} {{'ERROR.REQUIS' | translate}}
+                            </div>
+                            <div [hidden]="!firstName.errors.minlength">
+                              {{'FORM.FIRSTNAME' | translate}} {{'ERROR.MIN' | translate}}
+                            </div>
+                            <div [hidden]="!firstName.errors.maxlength">
+                              {{'FORM.FIRSTNAME' | translate}} {{'ERROR.MAX' | translate}}
+                            </div>
+                          </div>
+                        </div>
+                        <div *ngIf="isHomePage || isConfirmedSupplier || isProfile">
+                          <div class="input-group input-group-sm spacebutton">
+                            <small class="form-text col-12">{{'FORM.MAIL' | translate}} :</small>
+                            <span class="input-group-addon alignicone">
+                        <i class="fa fa-envelope-o"></i>
+                    </span>
+                            <input id="mail" required
+                                   [ngModel]="user?.mail"
+                                   (ngModelChange)="user.mail = $event"
+                                   name="mail"
+                                   type="mail"
+                                   placeholder="{{'FORM.MAIL' | translate}} *"
+                                   class="form-control"
+                                   [pattern]="emailPattern"
+                                   #mail="ngModel"/>
+                            <!--<span class="input-group-append">-->
+                            <!--<span class="btn btn-success input-group-text">-->
+                            <!--@example.com-->
+                            <!--</span>-->
+                            <!--</span>-->
+                            <div *ngIf="mail.errors && (mail.dirty || mail.touched)" class="alert alert-danger col-12">
+                              <div [hidden]="!mail.errors.required">
+                                Mail {{'ERROR.REQUIS' | translate}}
+                              </div>
+                              <div [hidden]="!mail.errors.pattern">
+                                Mail {{'ERROR.EMAIL' | translate}}
+                              </div>
+                            </div>
+                          </div>
+                          <div *ngIf="!isEdit" class="input-group input-group-sm spacebutton">
+                            <small class="form-text col-12">{{'FORM.MOTDEPASSE' | translate}} :</small>
+                            <span class="input-group-addon alignicone">
+                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    </span>
+                            <input id="password"
+                                   [minlength]="5"
+                                   [maxlength]="20" required
+                                   [ngModel]="user?.password"
+                                   (ngModelChange)="user.password = $event"
+                                   name="password"
+                                   type="password"
+                                   placeholder="{{'FORM.MOTDEPASSE' | translate}} *"
+                                   class="form-control" #password="ngModel"/>
+                            <div *ngIf="password.errors && (password.dirty || password.touched)"
+                                 class="alert alert-danger col-12">
+                              <div [hidden]="!password.errors.required">
+                                {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.REQUIS' | translate}}
+                              </div>
+                              <div [hidden]="!password.errors.minlength">
+                                {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.MIN' | translate}}
+                              </div>
+                              <div [hidden]="!password.errors.maxlength">
+                                {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.MAX' | translate}}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="input-group input-group-sm spacebutton">
+                          <small class="form-text col-12">{{'FORM.ADRESSE' | translate}} :</small>
+                          <span class="input-group-addon alignicone">
+                     <i class="fa fa-address-card-o" aria-hidden="true"></i>
+                    </span>
+                          <input id="address"
+                                 [ngModel]="user?.contact?.address1"
+                                 (ngModelChange)="user.contact.address1 = $event"
+                                 name="address"
+                                 type="text"
+                                 placeholder="{{'FORM.ADRESSE' | translate}}"
+                                 class="form-control"/>
+                        </div>
+                        <div class="input-group input-group-sm spacebutton">
+                          <small class="form-text col-12">{{'FORM.CODEPOSTAL' | translate}} :</small>
+                          <span class="input-group-addon alignicone">
+                     <i class="fa fa-map-marker" aria-hidden="true"></i>
+                    </span>
+                          <input id="zipCode"
+                                 [ngModel]="user?.contact?.zipCode"
+                                 (ngModelChange)="user.contact.zipCode = $event"
+                                 name="SupplierAreaCode"
+                                 type="text"
+                                 placeholder="{{'FORM.CODEPOSTAL' | translate}}"
+                                 class="form-control"/>
+                        </div>
+                        <div class="full-name-inputs row">
+                          <div class="col-sm-6 input-group input-group spacebutton">
+                            <small class="form-text col-12">{{'FORM.VILLE' | translate}} :</small>
+                            <span class="input-group-addon alignicone">
+                     <i class="fa fa-location-arrow" aria-hidden="true"></i>
+                    </span>
+                            <input id="city"
+                                   [ngModel]="user?.contact?.city"
+                                   (ngModelChange)="user.contact.city = $event"
+                                   name="city"
+                                   type="text"
+                                   placeholder="{{'FORM.VILLE' | translate}}"
+                                   class="form-control"/>
+                          </div>
+                          <div class="col-sm-6 input-group input-group-tn spacebutton">
+                            <small class="form-text col-12">{{'FORM.PAYS' | translate}} :</small>
+                            <span class="input-group-addon alignicone">
+                     <i class="fa fa-globe" aria-hidden="true"></i>
+                    </span>
+                            <select [ngModel]="user?.contact?.country"
+                                    (ngModelChange)="user.contact.country = $event"
+                                    class="form-control"
+                                    name="OriginCountry"
+                                    #country="ngModel"
+                                    required
+                                    [compareWith]="_compare">
+                              <option [ngValue]="null">{{ 'FORM.COUNTRYSELECTOR' | translate}}</option>
+                              <option *ngFor="let c of countries" value="{{c.countryCode}}">{{c.countryNameEn}}</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="full-name-inputs row">
+                          <div class="col-sm-6 input-group input-group-sm spacebutton">
+                            <small class="form-text col-12">Tel :</small>
+                            <span class="input-group-addon alignicone">
+                     <i class="fa fa-phone" aria-hidden="true"></i>
+                    </span>
+                            <input id="phone"
+                                   [ngModel]="user?.contact?.phone"
+                                   (ngModelChange)="user.contact.phone = $event"
+                                   name="phone" type="text" placeholder="Tel"
+                                   class="form-control"/>
+                          </div>
+                          <div class="col-sm-6 input-group input-group-sm spacebutton">
+                            <small class="form-text col-12">Fax :</small>
+                            <span class="input-group-addon alignicone">
+                     <i class="fa fa-fax" aria-hidden="true"></i>
+                    </span>
+                            <input id="Fax"
+                                   [ngModel]="user?.contact?.fax"
+                                   (ngModelChange)="user.contact.fax = $event"
+                                   name="fax" type="text" placeholder="Fax"
+                                   class="form-control"/>
+                          </div>
+                        </div>
+                        <div class="input-group input-group-sm spacebutton" *ngIf="onCountryChanged(user?.contact?.country) && isSupplier">
+                          <small class="form-text col-12">{{'FOURNISSEUR.TVA' | translate}} :</small>
+                          <span class="input-group-addon alignicone">
+                     <i class="fa euro-sign" aria-hidden="true"></i>
+                    </span>
+                          <input id="Tva" [(ngModel)]="user.tva"
+                                 name="Tva"
+                                 type="text" id="Tva"
+                                 #tva="ngModel"
+                                 placeholder="{{'FOURNISSEUR.TVA' | translate}}"
+
+                                 class="form-control" required/>
+                          <div *ngIf="tva.errors && (tva.dirty || tva.touched) && onCountryChanged(user?.contact?.country)"
+                               class="alert alert-danger col-12">
+                            <div [hidden]="!tva.errors.required">
+                              {{'FOURNISSEUR.VAT' | translate}} {{'ERROR.REQUIS' | translate}}
+                            </div>
+                          </div>
+                        </div>
+                        <a class="btn btn-danger button" (click)="navigateTo()"> {{'FORM.CANCEL' | translate}} </a>
+                        <button class="btn btn-success button" [disabled]="!f.valid"> {{'FORM.ENVOYER' | translate}} </button>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </nb-card-body>
+            </nb-card>
+          </div>
+        </div>
+
+

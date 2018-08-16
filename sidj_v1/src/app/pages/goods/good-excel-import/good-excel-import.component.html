@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-md-7">
+
+    <nb-card>
+      <nb-card-header>
+        <div class="row">
+          <div class="col-md-4">
+            {{ "EXCELIMPORT.TITLE" | translate}}
+          </div>
+          <div class="offset-2 col-md-4" [hidden]="user.userType.toUpperCase() === 'SUPPLIER'">
+            <label>{{ 'PRODUIT.SUPPLIERSELECT' | translate }}</label>
+            <ng-autocomplete #autocompleteSupplier
+                             (selected)="selectedSupplier($event)"
+                             [group]="suppliersGroup">
+            </ng-autocomplete>
+          </div>
+        </div>
+      </nb-card-header>
+      <nb-card-body>
+        <div class="row">
+          <div class="col-md-12">
+            <p> {{"EXCELIMPORT.MAINTEXT" | translate}}<a href="">ici</a>. </p>
+            <p> {{ "EXCELIMPORT.MAINTEXT2" | translate}}</p>
+            <p> {{ "EXCELIMPORT.MAINTEXT3" | translate}}</p>
+            <p> {{ "EXCELIMPORT.MAINTEXT4" | translate}}</p>
+            <p>{{ "EXCELIMPORT.DLLINK" | translate}}
+              <a *ngIf="isFrench; else englishFile" href="../../../../assets/Liste_Datasource.xlsx" target="_self"
+                 download>{{ "EXCELIMPORT.DLLINK2" | translate}}</a>
+              <ng-template #englishFile>
+                <a #englishFile href="../../../../assets/Liste_DatasourceENG.xlsx" target="_self" download>{{
+                  "EXCELIMPORT.DLLINK2" | translate}}</a>
+              </ng-template>
+            </p>
+            <p>
+              <input type="file" (click)="fileImport.value = null" (change)="onFileChange($event)" name="fileImport"
+                     [disabled]="!isSelectSup && !isSupplier"
+                     #fileImport>
+              <button [disabled]="!validGoods "
+                      class="btn btn-primary btn-tn pull-right"
+                      (click)="importGoods()">{{ "EXCELIMPORT.IMPORTBTN" | translate}}
+              </button>
+            </p>
+          </div>
+        </div>
+      </nb-card-body>
+    </nb-card>
+    <nb-card *ngIf="!validGoods && errorsArr.length > 0">
+      <nb-card-header>{{ "EXCELIMPORT.ERRLABEL" | translate}}</nb-card-header>
+      <nb-card-body>
+        <label>{{ errorsArr.length }}{{ "EXCELIMPORT.ERRORARR" | translate }}</label>
+        <ngx-show-errors [errorsArr]="errorsArr"></ngx-show-errors>
+      </nb-card-body>
+    </nb-card>
+  </div>
+  <div class="col-md-5">
+    <ngx-good-excel-fields-to-pdf></ngx-good-excel-fields-to-pdf>
+  </div>
+</div>
+
+

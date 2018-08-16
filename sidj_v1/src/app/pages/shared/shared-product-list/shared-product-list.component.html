@@ -1,0 +1,183 @@
+<div class="row">
+
+  <div class="col-md-12">
+    <nb-card>
+
+      <nb-card-header>
+        <button class="btn btn-success btn-tn margintop0" [disabled]="rows.length <= 0" (click)="allProducts()">
+          {{ "LISTERARTICLE.DLALL" | translate}}
+        </button>
+        <button class="btn btn-tn margintop0 bluecolor" [disabled]="arrayId.length <= 0" (click)="downloadPdf()">
+          {{ "LISTERARTICLE.DLSELECTED" |  translate}}
+        </button>
+
+        <ngx-shared-buttons class="pull-right"></ngx-shared-buttons>
+      </nb-card-header>
+      <nb-card-body>
+        <ngx-datatable
+          #goodTable
+          [rows]="rows"
+          class="material"
+          [columnMode]="'force'"
+          (sort)="onSort($event)"
+          (page)='setPage($event)'
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [externalPaging]="true"
+          [externalSorting]="true"
+          [selected]="selectedRow"
+          [selectCheck]="singleSelectCheck"
+          [count]="page.totalElements"
+          [offset]="page.pageNumber"
+          style="border-radius: 5px; box-shadow: 0px">
+
+          <ngx-datatable-column
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Select.">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <nb-checkbox [value]="value" (change)="addProductsToArr($event, row)"></nb-checkbox>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="70"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Actif"
+            prop="isEnabled">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Actif' : 'Active'}}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <nb-checkbox [value]="value" (change)="onDeselect($event, row)"></nb-checkbox>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="false"
+            [resizeable]="true"
+            name="Id"></ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Nom"
+            prop="name">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Nom' : 'Name'}}</span>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="120"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Reference"
+            prop="reference">
+
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="120"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Gencod"
+            prop="gencod">
+
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Modifier"
+            prop="id">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Modifier' : 'Modify'}}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <p data-placement="top" data-toggle="tooltip" title="View">
+                <button class="btn btn-tn btn-success"
+                        [routerLink]="['/home/goods/form-edit/', value]">
+                  <span class="ion-edit"></span>
+                </button>
+              </p>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Télécharger">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Télécharger' : 'Download'}}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <!--<p data-placement="top" data-toggle="tooltip" title="View">-->
+                <!--<button class="btn btn-tn bluecolor">-->
+                  <!--<span class="fa fa-print"></span>-->
+                <!--</button>-->
+              <!--</p>-->
+              <p data-placement="top" data-toggle="tooltip" title="View">
+              <button class="btn btn-tn bluecolor" (click)="addProductToArr(row.id)">
+                <span class="fa fa-print"></span>
+              </button>
+              </p>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Supprimer">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Supprimer' : 'Delete'}}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <p data-placement="top" data-toggle="tooltip" title="View">
+                <button class="btn btn-tn btn-danger" (click)="showDeleteModal(row.id)">
+                  <span class="ion-ios-trash-outline"></span>
+                </button>
+              </p>
+            </ng-template>
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="90"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="produits"
+            prop="id">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <button  class="btn btn-tn btn-outline-danger" (click)="showAddModal(row)"><i class="fa fa-eye"></i></button>
+            </ng-template>
+          </ngx-datatable-column>
+        </ngx-datatable>
+      </nb-card-body>
+      <ngx-shared-export-pdf #pdfcompo [isFrench]="isFrench"></ngx-shared-export-pdf>
+
+    </nb-card>
+
+  </div>
+</div>

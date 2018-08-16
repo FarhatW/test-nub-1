@@ -1,0 +1,155 @@
+<form name="myForm" #f="ngForm" novalidate (keydown)="keyDown($event)">
+  <!--(ngSubmit)="submit()"-->
+  <nb-card>
+    <nb-card-header>
+      <div class="row">
+        <div class="col-lg-6">
+          {{'PRODUIT.INFORMATIONSPRINCIPALES' | translate}}
+        </div>
+        <div class="offset-1 col-lg-9" [hidden]="user.userType.toUpperCase() === 'SUPPLIER'">
+          <label>{{ 'PRODUIT.SUPPLIERSELECT' | translate }}  <b class="redcolor">*</b></label>
+          <ng-autocomplete #autocompleteSupplier
+                           (selected)="selectedSupplier($event)"
+                           [group]="suppliersGroup">
+          </ng-autocomplete>
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="col-10 offset-1">
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.REFARTICLE' | translate}}
+            <b class="redcolor">*
+            </b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <input [ngModel]= "good?.reference"
+                 (ngModelChange)="good.reference = $event"
+                 placeholder="{{'PRODUIT.REFARTICLE' | translate}}"
+                 id="GoodsNumber"
+                 class="form-control"
+                 name="GoodsNumber" type="text"
+                 required
+                 #goodsnumber="ngModel"
+                 [pattern]="goodsNumberPattern"/>
+          <div *ngIf="goodsnumber.errors && (goodsnumber.dirty || goodsnumber.touched)" class="alert alert-danger col-12">
+            <div [hidden]="!goodsnumber.errors.required">
+              {{'PRODUIT.REFARTICLE' | translate}} {{'ERROR.REQUIS' | translate}}
+            </div>
+            <div [hidden]="!goodsnumber.errors.pattern">
+              {{'PRODUIT.REFARTICLE' | translate}} {{'ERROR.GOODSCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.LIBELLEPRODUIT' | translate}} <b class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <input [ngModel]="good?.name"
+                 (ngModelChange)="good.name = $event"
+                 placeholder="{{'PRODUIT.LIBELLEPRODUIT' | translate}}"
+                 id="ProductName" class="form-control"
+                 name="ProductName" type="text"
+                 required #productname="ngModel"/>
+          <div *ngIf="productname.errors && (productname.dirty || productname.touched)" class="alert alert-danger col-12">
+            <div [hidden]="!productname.errors.required">
+              {{'PRODUIT.LIBELLEPRODUIT' | translate}} {{'ERROR.REQUIS' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.GENCOD' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <input [ngModel]="good?.gencod"
+                 (ngModelChange)="good.gencod = $event"
+
+                 placeholder="{{'PRODUIT.GENCOD' | translate}}"
+                 id="Gencod" class="form-control"
+                 name="Gencod" type="text"
+                 (keyup)="verifyGencod(good.gencod)"
+                 (blur)="gencodBlur(good.gencod)"
+                 [minlength]="12" [maxlength]="13" #gencod="ngModel" [pattern]="numberPattern"/>
+          <div *ngIf="gencod.errors && (gencod.dirty || gencod.touched)" class="alert alert-danger col-12">
+            <div [hidden]="!gencod.errors.minlength">
+              {{'PRODUIT.GENCOD' | translate}} {{'ERROR.MINGENCOD' | translate}}
+            </div>
+            <div [hidden]="!gencod.errors.maxlength">
+              {{'PRODUIT.GENCOD' | translate}} {{'ERROR.MAXGENCOD' | translate}}
+            </div>
+            <div [hidden]="!gencod.errors.pattern">
+              {{'PRODUIT.GENCOD' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.REFDOUANIERE' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <input [ngModel]="good?.customsReference" (ngModelChange)="good.customsReference = $event" placeholder="{{'PRODUIT.REFDOUANIERE' | translate}}"
+                 id="CustomsReference" class="form-control" name="CustomsReference" type="text"
+                 #customsreference="ngModel" [pattern]="numberPattern"/>
+          <div *ngIf="customsreference.errors && (customsreference.dirty || customsreference.touched)" class="alert alert-danger col-12">
+            <div [hidden]="!customsreference.errors.pattern">
+              {{'PRODUIT.REFDOUANIERE' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.PAYSORIGINE' | translate}} <b class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+                     <i class="fa fa-globe" aria-hidden="true"></i>
+                    </span>
+          <select [ngModel]="good?.countryCode"
+                  (ngModelChange)="good.countryCode = $event"
+                  class="form-control" name="OriginCountry"
+                  (change)="setContinent(good.countryCode)"
+                  required>
+            <option value="" selected data-default>{{'PRODUIT.SELECTPAYS' | translate }}</option>
+            <option *ngFor="let c of countries" value="{{c.countryCode}}" >
+              {{c.countryNameEn}}
+            </option>
+          </select>
+        </div>
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.DESCRIPTIONPRODUIT' | translate}} <b class="redcolor">*
+          </b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+          <textarea [ngModel]="good?.description"
+                    (ngModelChange)="good.description = $event"
+                    required
+                    #description
+                    placeholder="{{'PRODUIT.DESCRIPTIONPRODUIT' | translate}}" class="form-control"
+                    name="ProductDescription" id="ProducDescription"></textarea>
+          <div *ngIf="description.errors && (description.dirty || description.touched)" class="alert alert-danger col-12">
+            <div [hidden]="!description.errors.required">
+              {{'PRODUIT.REFDOUANIERE' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button type="button" class="btn btn-success button spacebutton pull-right" [disabled]="!f.valid || !isGencod || (good && good.supplierId === 0)" (click)="updateStep1(true)">
+            {{'GENERAL.SUIVANT' | translate}}
+          </button>
+        </div>
+        <div class="col-12">
+          <button type="button" class="btn button spacebutton pull-right bluecolor" *ngIf="(good && isEdit)"
+                  [disabled]="!f.valid || !isGencod || (good && good.supplierId === 0)" (click)="updateStep1(false)">{{'GENERAL.UPDATE' | translate}}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

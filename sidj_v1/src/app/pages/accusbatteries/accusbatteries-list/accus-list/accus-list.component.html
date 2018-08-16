@@ -1,0 +1,50 @@
+<ngx-datatable
+  #batteryTable
+  [rows]="rows"
+  class="bootstrap"
+  [columnMode]="'force'"
+  [headerHeight]="50"
+  [footerHeight]="50"
+  [rowHeight]="'auto'"
+  [externalPaging]="true"
+  [externalSorting]="true"
+  (select)="onSelect($event)"
+  [count]="page.totalElements"
+  [offset]="page.pageNumber"
+  (sort)="onSort($event)"
+  (page)='setPage($event)'
+  [selectionType]="'single'"
+  [limit]="page.size"
+>
+  <ngx-datatable-column
+    [width]="50"
+    [sortable]="true"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="true"
+    name="Id"></ngx-datatable-column>
+  <ngx-datatable-column
+    [width]="70"
+    [sortable]="true"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="false"
+    name="Ref."
+    prop="ref">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      {{ value }}
+    </ng-template>
+  </ngx-datatable-column>
+
+  <ngx-datatable-column
+    [width]="100"
+    [sortable]="true"
+    [canAutoResize]="true"
+    [draggable]="false"
+    [resizeable]="200"
+    name="Suppr.">
+    <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+      <button class="btn btn-danger btn-tn" (click)="onDelete(row)"><i><span class="ion-ios-trash-outline"></span></i></button>
+    </ng-template>
+  </ngx-datatable-column>
+</ngx-datatable>

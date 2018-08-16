@@ -1,0 +1,29 @@
+<nb-card>
+  <nb-card-header>Import de fichiers</nb-card-header>
+  <nb-card-body>
+    <div class="row">
+      <div class="col-md-12">
+        <p>
+          <input type="file"
+                 (click)="fileImport.value = null" (change)="onFileChange($event)"
+                 name="fileImport"
+                 [disabled]="!supplier"
+                 #fileImport>
+          <button [disabled]="!validGoods"
+                  class="btn btn-primary btn-tn pull-right"
+                  (click)="importFile()"> Sauvegarder les produits.
+          </button>
+        </p>
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+<nb-card *ngIf="!validGoods && errorsArr.length > 0">
+  <nb-card-header>Erreurs</nb-card-header>
+  <nb-card-body>
+    <label>{{ errorsArr.length }} erreurs trouvées.</label>
+
+    <ngx-show-errors [errorsArr]="errorsArr"></ngx-show-errors>
+  </nb-card-body>
+</nb-card>
+

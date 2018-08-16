@@ -1,0 +1,18 @@
+
+<nb-card >
+  <nb-card-header>Liste des fichiers par Fournisseur</nb-card-header>
+  <nb-card-body class="overfloworverride">
+    <div class="row">
+      <div class="col-3">
+        <ng-autocomplete #completer
+
+                         (selected)="SelectedSupplier($event)"
+                         [group]="groupBattery"></ng-autocomplete>
+      </div>
+      <div class="offset-4 col-5">
+        <label>Fournisseur sélectionné</label> : {{ selectedSupplierName}}
+      </div>
+    </div>
+  </nb-card-body>
+</nb-card>
+

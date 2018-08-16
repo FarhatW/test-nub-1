@@ -1,0 +1,311 @@
+<form name="myForm" #f="ngForm" novalidate (keydown)="keyDown($event)">
+  <nb-card>
+    <nb-card-header>
+      <div class="row">
+        <div class="col-lg-6">
+          {{'PRODUIT.CONDITIONSTARIFAIRES' | translate}}
+        </div>
+      </div>
+    </nb-card-header>
+    <nb-card-body>
+      <div class="col-10 offset-1">
+
+        <div class="input-group input-group-tn spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.DEVISE' | translate}} <b class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+            <i class="fa fa-money" aria-hidden="true"></i>
+          </span>
+          <select [ngModel]="goods?.currency" (ngModelChange)="goods.currency = $event"
+                  class="form-control" name="Currency"
+                  required>
+            <option value="" selected data-default>{{'PRODUIT.SELECTDEVISE' | translate}}</option>
+            <option *ngFor="let c of currency" value="{{c.name}}">{{c.name}}</option>
+          </select>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.FOBBRUT' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.fobGrossPrice" (ngModelChange)="goods.fobGrossPrice = $event"
+                   placeholder="{{'PRODUIT.FOBBRUT' | translate}}"
+                   id="FobGrossPrice" class="form-control" name="FobGrossPrice" type="text"
+                   #fobgrossprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.FOBNET' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.fobNetPrice" (ngModelChange)="goods.fobNetPrice = $event"
+                   placeholder="{{'PRODUIT.FOBNET' | translate}}"
+                   id="FobNetPrice" class="form-control" name="FobNetPrice" type="text"
+                   #fobnetprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="fobgrossprice.errors && (fobgrossprice.dirty || fobgrossprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!fobgrossprice.errors.pattern">
+                {{'PRODUIT.FOBBRUT' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="fobnetprice.errors && (fobnetprice.dirty || fobnetprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!fobnetprice.errors.pattern">
+                {{'PRODUIT.FOBNET' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.DDPBRUT' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.ddpGrossPrice" (ngModelChange)="goods.ddpGrossPrice = $event"
+                   placeholder="{{'PRODUIT.DDPBRUT' | translate}}"
+                   id="DdpGrossPrice" class="form-control" name="DdpGrossPrice" type="text"
+                   #ddpgrossprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.DDPNET' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.ddpNetPrice" (ngModelChange)="goods.ddpNetPrice = $event"
+                   placeholder="{{'PRODUIT.DDPNET' | translate}}"
+                   id="DdpNetPrice" class="form-control" name="DdpNetPrice" type="text"
+                   #ddpnetprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="ddpgrossprice.errors && (ddpgrossprice.dirty || ddpgrossprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!ddpgrossprice.errors.pattern">
+                {{'PRODUIT.DDPBRUT' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="ddpnetprice.errors && (ddpnetprice.dirty || ddpnetprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!ddpnetprice.errors.pattern">
+                {{'PRODUIT.DDPNET' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.EXWORKSBRUT' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.exWorksGrossPrice" (ngModelChange)="goods.exWorksGrossPrice = $event"
+                   placeholder="{{'PRODUIT.EXWORKSBRUT' | translate}}"
+                   id="ExWorksGrossPrice" class="form-control" name="ExWorksGrossPrice" type="text"
+                   #exworksgrossprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+            <small class="form-text col-12">{{'PRODUIT.EXWORKSNET' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+            </small>
+            <span class="input-group-addon">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+          </span>
+            <input [ngModel]="goods?.exWorksNetPrice" (ngModelChange)="goods.exWorksNetPrice = $event"
+                   placeholder="{{'PRODUIT.EXWORKSNET' | translate}}"
+                   id="ExWorksNetPrice" class="form-control" name="ExWorksNetPrice" type="text"
+                   #exworksnetprice="ngModel" [pattern]="numberWithPointPattern"/>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="exworksgrossprice.errors && (exworksgrossprice.dirty || exworksgrossprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!exworksgrossprice.errors.pattern">
+                {{'PRODUIT.EXWORKSBRUT' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 col-md-6 input-group input-group-sm">
+            <div *ngIf="exworksnetprice.errors && (exworksnetprice.dirty || exworksnetprice.touched)"
+                 class="alert alert-danger col-12">
+              <div [hidden]="!exworksnetprice.errors.pattern">
+                {{'PRODUIT.EXWORKSNET' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-tn spacebutton" *ngIf="goods?.continent === 'Europe'">
+          <small class="form-text col-12">{{'PRODUIT.TVA' | translate}} <b class="redcolor">*</b>{{'PRODUIT.DEUXPOINTS' | translate}}</small>
+          <span class="input-group-addon alignicone">
+                     <i class="fa fa-percent" aria-hidden="true"></i>
+                    </span>
+          <select [ngModel]="goods?.vatRate" (ngModelChange)="goods.vatRate = $event"
+                  class="form-control" name="VatRate"
+                  required>
+            <option value="" selected data-default>{{'PRODUIT.SELECTVAT' | translate}}</option>
+            <option *ngFor="let v of vatRate" value="{{v.name}}">{{v.name}} %</option>
+          </select>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.TEMPSLIVRAISON' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+          </small>
+          <span class="input-group-addon">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+          <input [ngModel]="goods?.shipmentTime" (ngModelChange)="goods.shipmentTime = $event"
+                 placeholder="{{'PRODUIT.TEMPSLIVRAISON' | translate}}"
+                 id="ShipmentTime" class="form-control" name="ShipmentTime" type="text"
+                 #shipmenttime="ngModel" [pattern]="numberPattern"/>
+          <span class="input-group-append">
+          <span class="btn input-group-text blackcolor height36">
+            {{'GENERAL.JOURS' | translate}}
+          </span>
+        </span>
+          <div *ngIf="shipmenttime.errors && (shipmenttime.dirty || shipmenttime.touched)"
+               class="alert alert-danger col-12">
+            <div [hidden]="!shipmenttime.errors.pattern">
+              {{'PRODUIT.TEMPSLIVRAISON' | translate}} {{'ERROR.NUMBERCONFIG' | translate}}
+            </div>
+          </div>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.TERMEPAIEMENT' | translate}}{{'PRODUIT.DEUXPOINTS' | translate}}
+          </small>
+          <span class="input-group-addon">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+          <input [ngModel]="goods?.paymentTerms" (ngModelChange)="goods.paymentTerms = $event"
+                 placeholder="{{'PRODUIT.TERMEPAIEMENT' | translate}}"
+                 id="PaymentTerms" class="form-control" name="PaymentTerms" type="text"/>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-12">{{'PRODUIT.LIEUDECHARGEMENT' | translate}}{{'PRODUIT.DEUXPOINTS' |
+            translate}}
+          </small>
+          <span class="input-group-addon">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+          <input [ngModel]="goods?.departurePlace"
+                 (ngModelChange)="goods.departurePlace = $event"
+                 placeholder="{{'PRODUIT.LIEUDECHARGEMENT' | translate}}"
+                 id="DeparturePlace" class="form-control"
+                 name="DeparturePlace" type="text"/>
+        </div>
+
+        <div class="full-name-inputs row">
+          <div class="col-sm-6 input-group input-group-sm spacebutton">
+            <nb-checkbox [ngModel]="goods?.isExclusivityJc"
+                         (ngModelChange)="goods.isExclusivityJc = $event"
+                         [ngModelOptions]="{standalone: true}">
+              {{'PRODUIT.EXCLUSIVITEJC' | translate}}
+            </nb-checkbox>
+          </div>
+          <div class="col-sm-6 input-group input-group-sm spacebutton">
+            <nb-checkbox [ngModel]="goods?.isSpecialBoxJc"
+                         (ngModelChange)="goods.isSpecialBoxJc = $event"
+                         [ngModelOptions]="{standalone: true}">
+              {{'PRODUIT.EXCLUSIVITEBOITE' | translate}}
+            </nb-checkbox>
+          </div>
+          <div class="col-sm-6 input-group input-group-sm spacebutton">
+            <nb-checkbox [ngModel]="goods?.isExclusivitySpecialist"
+                         (ngModelChange)="goods.isExclusivitySpecialist = $event"
+                         [ngModelOptions]="{standalone: true}">
+              {{'PRODUIT.EXCLUSIVITESPECIALISTE' | translate}}
+            </nb-checkbox>
+          </div>
+        </div>
+
+        <div class="full-name-inputs row">
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.DATEVALIDITE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+            translate}}
+          </small>
+          <span class="input-group-addon">
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </span>
+          <input [ngModel]="goods?.dateOfValidity"
+                 (ngModelChange)="goods.dateOfValidity = $event"
+                 placeholder="{{'PRODUIT.DATEVALIDITE' | translate}}"
+                 (change)="VerifyDate(goods.dateOfValidity, dateOfValidity.name)"
+                 #dateOfValidity="ngModel"
+                 id="DateOfValidity"
+                 class="form-control"
+                 name="dateOfValidity" type="date"/>
+        </div>
+        <div class="col-sm-12 col-md-6 input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.DATEDISPONIBILITEPRODUIT' | translate}} {{'PRODUIT.DEUXPOINTS' | translate}}
+          </small>
+          <span class="input-group-addon">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </span>
+          <input [ngModel]="goods?.availabilityProduct"
+                 (ngModelChange)="goods.availabilityProduct = $event"
+                 placeholder="{{'PRODUIT.DATEDISPONIBILITEPRODUIT' | translate}}"
+                 id="availabilityProduct"
+                 class="form-control"
+                 name="availabilityProduct" type="date"
+                 (change)="VerifyDate(goods.availabilityProduct, availabilityProduct.name)"
+                 #availabilityProduct="ngModel"
+                 min="01-01-2018"/>
+        </div>
+        </div>
+
+        <div class="input-group input-group-sm spacebutton">
+          <small class="form-text col-lg-12">{{'PRODUIT.MINIMUMQUANTITE' | translate}}{{'PRODUIT.DEUXPOINTS' |
+            translate}}
+          </small>
+          <span class="input-group-addon">
+        <i class="fa fa-pencil" aria-hidden="true"></i>
+      </span>
+          <input [ngModel]="goods?.minimumQuantity"
+                 (ngModelChange)="goods.minimumQuantity = $event"
+                 placeholder="{{'PRODUIT.MINIMUMQUANTITE' | translate}}"
+                 id="MinimumQuantity" class="form-control" name="MinimumQuantity" type="text"/>
+        </div>
+
+      </div>
+    </nb-card-body>
+    <nb-card-footer>
+      <div class="row">
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button class="btn btn-success button spacebutton pull-right" (click)="goToBefore()">{{'GENERAL.PRECEDENT' |
+            translate}}
+          </button>
+        </div>
+        <div class="col-sm-6 offset-sm-6 offset-md-0 col-md-6">
+          <button type="button" class="btn btn-success button spacebutton"
+                  [disabled]="!f.valid || !isAvailabilityDate || !isValidityDate" (click)="updateStep2(true)">{{'GENERAL.SUIVANT' | translate}}
+          </button>
+        </div>
+        <div class="col-12">
+          <button type="button" class="btn button spacebutton pull-right bluecolor" *ngIf="isEdit"
+                  [disabled]="!f.valid || !isAvailabilityDate || !isValidityDate" (click)="updateStep2(false)">{{'GENERAL.UPDATE' | translate}}
+          </button>
+        </div>
+      </div>
+    </nb-card-footer>
+  </nb-card>
+</form>

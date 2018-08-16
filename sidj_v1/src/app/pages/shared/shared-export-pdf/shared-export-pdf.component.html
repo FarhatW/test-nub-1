@@ -1,0 +1,9 @@
+<div class="hiddenpdfblock">
+  <kendo-pdf-export #pdf forcePageBreak=".page-break" paperSize="A2">
+    <div *ngFor="let good of allProductsForPdf">
+      <div class="marginpdfdownload {{good.id === allProductsForPdf[0].id ? '' : 'page-break'}}">
+      <ngx-shared-pdf-view [good]="good"></ngx-shared-pdf-view>
+      </div>
+    </div>
+  </kendo-pdf-export>
+</div>

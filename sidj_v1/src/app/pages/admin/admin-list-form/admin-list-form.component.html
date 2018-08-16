@@ -1,0 +1,109 @@
+<div class="row">
+  <div class="col-md-12">
+    <nb-card>
+      <nb-card-body>
+        <ngx-datatable
+          #adminTable
+          [rows]="rows"
+          class="material"
+          [columnMode]="'force'"
+          (sort)="onSort($event)"
+          (page)='setPage($event)'
+          [headerHeight]="50"
+          [footerHeight]="50"
+          [rowHeight]="'auto'"
+          [externalPaging]="true"
+          [externalSorting]="true"
+          [selected]="selectedRow"
+          [selectCheck]="singleSelectCheck"
+          [count]="page.totalElements"
+          [offset]="page.pageNumber"
+          [limit]="page.size"
+          style="border-radius: 5px; box-shadow: 0px">
+
+          <ngx-datatable-column
+            [width]="70"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Actif"
+            prop="isEnabled">
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <nb-checkbox [value]="value" (change)="onDeselect($event, row)"></nb-checkbox>
+            </ng-template>
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="50"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="false"
+            [resizeable]="true"
+            name="Id"></ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Nom"
+            prop="lastName">
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="120"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Prénom"
+            prop="firstName">
+
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Email"
+            prop="mail">
+          </ngx-datatable-column>
+          <ngx-datatable-column
+            [width]="100"
+            [sortable]="true"
+            [canAutoResize]="true"
+            [draggable]="true"
+            [resizeable]="true"
+            name="Téléphone"
+            prop="contact.phone">
+          </ngx-datatable-column>
+
+          <ngx-datatable-column
+            [width]="90"
+            [sortable]="false"
+            [canAutoResize]="false"
+            [draggable]="false"
+            [resizeable]="false"
+            name="Edit"
+            prop="id">
+            <ng-template let-column="column" ngx-datatable-header-template>
+              <span>{{isFrench? 'Modifier' : 'Edit'}}</span>
+            </ng-template>
+            <ng-template let-row="row" let-value="value" ngx-datatable-cell-template>
+              <p data-placement="top" data-toggle="tooltip" title="View">
+                <button class="btn btn-tn btn-success" [routerLink]="['/home/admin/edit/' + value]">
+                  <span class="ion-edit"></span>
+                </button>
+              </p>
+            </ng-template>
+          </ngx-datatable-column>
+
+        </ngx-datatable>
+      </nb-card-body>
+    </nb-card>
+  </div>
+</div>

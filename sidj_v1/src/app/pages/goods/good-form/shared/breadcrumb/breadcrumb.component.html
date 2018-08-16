@@ -1,0 +1,60 @@
+<div id="bootstrap-wizard-1" class="col-sm-12" style="margin-bottom:50px;">
+  <div class="form-bootstrapWizard">
+    <ul class="bootstrapWizard form-wizard">
+      <li class="{{componentSelected == 'stepOne' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+          (click)="goToStepOne()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">1</span>
+          <span class="title">{{'PRODUIT.INFORMATIONSPRINCIPALES' | translate}}</span>
+        </button>
+      </li>
+
+      <li class="{{componentSelected == 'stepTwo' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+          (click)="goToStepTwo()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">2</span>
+          <span class="title">{{'PRODUIT.CONDITIONSTARIFAIRES' | translate}}</span>
+        </button>
+      </li>
+
+      <li class="{{componentSelected == 'stepThree' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+          (click)="goToStepThree()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">3</span>
+          <span class="title">{{'PRODUIT.INFORMATIONSSECONDAIRE' | translate}}</span>
+        </button>
+      </li>
+
+      <li class="{{componentSelected == 'stepFour' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+          (click)="goToStepFour()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">4</span>
+          <span class="title">{{'PRODUIT.LOGISTIQUE' | translate}}</span>
+        </button>
+      </li>
+
+      <li class="{{componentSelected == 'stepFive' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+          (click)="goToStepFive()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">5</span>
+          <span class="title">{{'PRODUIT.COMMENTAIRES' | translate}}</span>
+        </button>
+      </li>
+
+      <li *ngIf="id != 0" class="{{componentSelected == 'stepSix' ? 'active' : '' }}">
+        <button [disabled]="!isValid"
+                (click)="goToStepSix()"
+                data-toggle="tab" class="{{isValid ? 'pointer' : ''}}">
+          <span class="step">6</span>
+          <span class="title">Photo</span>
+        </button>
+      </li>
+    </ul>
+    <div class="clearfix"></div>
+  </div>
+</div>

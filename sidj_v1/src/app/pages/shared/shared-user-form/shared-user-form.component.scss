@@ -1,0 +1,38 @@
+@import '../../../@theme/styles/themes';
+@import '~bootstrap/scss/mixins/breakpoints';
+@import '~@nebular/theme/styles/global/bootstrap/breakpoints';
+
+@include nb-install-component() {
+
+  nb-card-body {
+    overflow: visible;
+  }
+}
+
+.button {
+  margin:15px 0 0 15px !important;
+  float:right !important;
+}
+
+.spacebutton {
+  margin:5px 0;
+}
+
+i {
+  display:block;
+}
+
+.alignicone {
+  width:60px;
+  text-align:center;
+}
+
+input {
+  height:37px !important;
+}
+
+select {
+  padding: 0 15px !important;
+  color: #a4abb3 !important;
+  height:37px !important;
+}

@@ -1,0 +1,76 @@
+<div class="modal-header">
+  <span>Activer le compte Fournisseur </span>
+  <button class="close" aria-label="Close" (click)="closeModal()">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<form name="form" (ngSubmit)="f.form.valid && updateUser() " #f="ngForm">
+  <div class="modal-body">
+    <div class="form-group" >
+      <div class="input-group input-group-sm spacebutton">
+        <small class="form-text col-12">{{'FORM.MAIL' | translate}} :</small>
+        <span class="input-group-addon alignicone">
+                        <i class="fa fa-envelope-o"></i>
+                    </span>
+        <input id="mail" required
+               [ngModel]="user?.mail"
+               (ngModelChange)="user.mail = $event"
+               name="mail"
+               type="mail"
+               placeholder="{{'FORM.MAIL' | translate}} *"
+               class="form-control"
+               [pattern]="emailPattern"
+               #mail="ngModel"/>
+        <!--<span class="input-group-append">-->
+        <!--<span class="btn btn-success input-group-text">-->
+        <!--@example.com-->
+        <!--</span>-->
+        <!--</span>-->
+        <div *ngIf="mail.errors && (mail.dirty || mail.touched)" class="alert alert-danger col-12">
+          <div [hidden]="!mail.errors.required">
+            Mail {{'ERROR.REQUIS' | translate}}
+          </div>
+          <div [hidden]="!mail.errors.pattern">
+            Mail {{'ERROR.EMAIL' | translate}}
+          </div>
+        </div>
+      </div>
+
+      <div class="input-group input-group-sm spacebutton">
+      <small class="form-text col-12">{{'FORM.MOTDEPASSE' | translate}} :</small>
+      <span class="input-group-addon alignicone">
+                     <i class="fa fa-unlock-alt" aria-hidden="true"></i>
+                    </span>
+      <input id="password"
+             [minlength]="5"
+             [maxlength]="20" required
+             [ngModel]="user?.password"
+             (ngModelChange)="user.password = $event"
+             name="password"
+             type="password"
+             placeholder="{{'FORM.MOTDEPASSE' | translate}} *"
+             class="form-control" #password="ngModel"/>
+      <div *ngIf="password.errors && (password.dirty || password.touched)"
+           class="alert alert-danger col-12">
+        <div [hidden]="!password.errors.required">
+          {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.REQUIS' | translate}}
+        </div>
+        <div [hidden]="!password.errors.minlength">
+          {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.MIN' | translate}}
+        </div>
+        <div [hidden]="!password.errors.maxlength">
+          {{'FORM.MOTDEPASSE' | translate}} {{'ERROR.MAX' | translate}}
+        </div>
+      </div>
+    </div>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-md btn-primary" style="background-color: #E31319;" [disabled]="!f.form.valid">{{'GENERAL.ENVOYER' | translate}}</button>
+  </div>
+</form>
+
+
+
+
+
